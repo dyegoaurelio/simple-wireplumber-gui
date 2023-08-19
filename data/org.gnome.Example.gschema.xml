@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="simple-wireplumber-gui">
+	<schema id="org.gnome.Example" path="/org/gnome/Example/">
+	</schema>
+</schemalist>
