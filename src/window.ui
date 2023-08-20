@@ -18,6 +18,39 @@
             </child>
           </object>
         </child>
+
+
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">horizontal</property>
+            <property name="homogeneous">true</property>
+            <property name="margin-top">25</property>
+            <property name="halign">GTK_ALIGN_CENTER</property>
+
+            <child>
+              <object id="HEADER_BTN_INPUT" class="GtkToggleButton">
+                <property name="label">Input Devices</property>
+              </object>
+            </child>
+
+            <child>
+              <object id="HEADER_BTN_OUTPUT" class="GtkToggleButton">
+                <property name="label">Output Devices</property>
+                <property name="group">HEADER_BTN_INPUT</property>
+              </object>
+            </child>
+
+            <child>
+              <object id="HEADER_BTN_VIDEO" class="GtkToggleButton">
+                <property name="label">Video Input</property>
+                <property name="group">HEADER_BTN_INPUT</property>
+              </object>
+            </child>
+
+          </object>
+        </child>
+
+
         <child>
           <object class="GtkLabel" id="label">
             <property name="label">Hello, World!</property>
