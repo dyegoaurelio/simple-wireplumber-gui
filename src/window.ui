@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk" version="4.0"/>
-  <requires lib="Adw" version="1.0"/>
+  <requires lib="gtk" version="4.0" />
+  <requires lib="Adw" version="1.0" />
   <template class="SimpleWireplumberGuiWindow" parent="AdwApplicationWindow">
     <property name="default-width">900</property>
     <property name="default-height">700</property>
@@ -52,14 +52,49 @@
 
 
         <child>
-          <object class="GtkLabel" id="label">
-            <property name="label">Hello, World!</property>
-            <property name="vexpand">true</property>
-            <style>
-              <class name="title-1"/>
-            </style>
+          <object class="AdwPreferencesGroup">
+            <property name="title">Example Group</property>
+            <property name="description">This is an example group in Adw Preferences.</property>
+            <property name="header-suffix">suffix</property>
+
+            <child>
+              <object class="AdwActionRow">
+                <property name="title">Example title</property>
+                <property name="subtitle">Example subtitle</property>
+                <child>
+                  <object class="GtkSwitch">
+
+                  </object>
+
+                </child>
+
+                <child>
+                  <object class="GtkToggleButton">
+
+                  </object>
+
+                </child>
+                <child>
+                  <object class="GtkToggleButton">
+
+                  </object>
+
+                </child>
+
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title">Example title</property>
+                <!-- <property name="subtitle">Example subtitle</property> -->
+
+              </object>
+            </child>
+
           </object>
         </child>
+
+
       </object>
     </child>
   </template>
