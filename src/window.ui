@@ -2,101 +2,93 @@
 <interface>
   <requires lib="gtk" version="4.0" />
   <requires lib="Adw" version="1.0" />
-  <template class="SimpleWireplumberGuiWindow" parent="AdwApplicationWindow">
-    <property name="default-width">900</property>
-    <property name="default-height">700</property>
-    <child>
-      <object class="GtkBox">
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkHeaderBar" id="header_bar">
-            <child type="end">
-              <object class="GtkMenuButton">
-                <property name="icon-name">open-menu-symbolic</property>
-                <property name="menu-model">primary_menu</property>
-              </object>
-            </child>
-          </object>
-        </child>
-
-
-        <child>
-          <object class="GtkBox">
-            <property name="orientation">horizontal</property>
-            <property name="homogeneous">true</property>
-            <property name="margin-top">25</property>
-            <property name="halign">GTK_ALIGN_CENTER</property>
-
-            <child>
-              <object id="HEADER_BTN_INPUT" class="GtkToggleButton">
-                <property name="label">Input Devices</property>
-              </object>
-            </child>
-
-            <child>
-              <object id="HEADER_BTN_OUTPUT" class="GtkToggleButton">
-                <property name="label">Output Devices</property>
-                <property name="group">HEADER_BTN_INPUT</property>
-              </object>
-            </child>
-
-            <child>
-              <object id="HEADER_BTN_VIDEO" class="GtkToggleButton">
-                <property name="label">Video Input</property>
-                <property name="group">HEADER_BTN_INPUT</property>
-              </object>
-            </child>
-
-          </object>
-        </child>
-
-
-        <child>
-          <object class="AdwPreferencesGroup">
-            <property name="title">Example Group</property>
-            <property name="description">This is an example group in Adw Preferences.</property>
-            <property name="header-suffix">suffix</property>
-
-            <child>
-              <object class="AdwActionRow">
-                <property name="title">Example title</property>
-                <property name="subtitle">Example subtitle</property>
-                <child>
-                  <object class="GtkSwitch">
-
-                  </object>
-
-                </child>
-
-                <child>
-                  <object class="GtkToggleButton">
-
-                  </object>
-
-                </child>
-                <child>
-                  <object class="GtkToggleButton">
-
-                  </object>
-
-                </child>
-
-              </object>
-            </child>
-            <child>
-              <object class="AdwActionRow">
-                <property name="title">Example title</property>
-                <!-- <property name="subtitle">Example subtitle</property> -->
-
-              </object>
-            </child>
-
-          </object>
-        </child>
-
-
-      </object>
-    </child>
+  <template class="SimpleWireplumberGuiWindow" parent="AdwPreferencesWindow">
+   
+      <property name="title">Sample Preferences</property>
+      <property name="resizable">True</property>
+      <property name="default-width">600</property>
+      <property name="default-height">400</property>
+      
+      <!-- First Preferences Page -->
+      <child>
+        <object class="AdwPreferencesPage" id="page1">
+          <property name="title">General</property>
+          
+          <!-- First Preferences Group on Page 1 -->
+          <child>
+            <object class="AdwPreferencesGroup">
+              <property name="title">Example Group</property>
+              <property name="description">This is an example group in Adw Preferences.</property>
+              <property name="header-suffix">suffix</property>
+  
+              <child>
+                <object class="AdwActionRow">
+                  <property name="title">Example title</property>
+                  <property name="subtitle">Example subtitle</property>
+                  <child>
+                    <object class="GtkSwitch">
+  
+                    </object>
+  
+                  </child>
+  
+                  <child>
+                    <object class="GtkToggleButton">
+  
+                    </object>
+  
+                  </child>
+                  <child>
+                    <object class="GtkToggleButton">
+  
+                    </object>
+  
+                  </child>
+  
+                </object>
+              </child>
+              <child>
+                <object class="AdwActionRow">
+                  <property name="title">Example title</property>
+                  <!-- <property name="subtitle">Example subtitle</property> -->
+  
+                </object>
+              </child>
+  
+            </object>
+          </child>
+          
+          <!-- Second Preferences Group on Page 1 -->
+          <child>
+            <object class="AdwPreferencesGroup" id="group1_2">
+              <property name="title">Appearance</property>
+              
+              <!-- Add widgets for appearance settings here -->
+              
+            </object>
+          </child>
+          
+        </object>
+      </child>
+      
+      <!-- Second Preferences Page -->
+      <child>
+        <object class="AdwPreferencesPage" id="page2">
+          <property name="title">Advanced</property>
+          
+          <!-- First Preferences Group on Page 2 -->
+          <child>
+            <object class="AdwPreferencesGroup" id="group2_1">
+              <property name="title">Advanced Settings</property>
+              
+              <!-- Add widgets for advanced settings here -->
+              
+            </object>
+          </child>
+          
+        </object>
+      </child>
+      
   </template>
   <menu id="primary_menu">
     <section>

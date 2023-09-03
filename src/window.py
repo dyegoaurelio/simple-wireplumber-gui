@@ -21,7 +21,7 @@ from gi.repository import Adw
 from gi.repository import Gtk
 
 @Gtk.Template(resource_path='/org/gnome/Example/window.ui')
-class SimpleWireplumberGuiWindow(Adw.ApplicationWindow):
+class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
     __gtype_name__ = 'SimpleWireplumberGuiWindow'
 
     label = Gtk.Template.Child()
