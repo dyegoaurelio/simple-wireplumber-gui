@@ -1,4 +1,4 @@
-application_id = 'org.gnome.Example'
+application_id = 'io.github.dyegoaurelio.simple-wireplumber-gui'
 
 scalable_dir = join_paths('hicolor', 'scalable', 'apps')
 install_data(

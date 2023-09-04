@@ -1,6 +1,6 @@
-data/org.gnome.Example.desktop.in
-data/org.gnome.Example.appdata.xml.in
-data/org.gnome.Example.gschema.xml
+data/io.github.dyegoaurelio.simple-wireplumber-gui.desktop.in
+data/io.github.dyegoaurelio.simple-wireplumber-gui.appdata.xml.in
+data/io.github.dyegoaurelio.simple-wireplumber-gui.gschema.xml
 src/main.py
 src/window.py
 src/window.ui

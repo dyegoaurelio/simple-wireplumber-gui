@@ -1,5 +1,5 @@
 {
-    "app-id" : "org.gnome.Example",
+    "app-id" : "io.github.dyegoaurelio.simple-wireplumber-gui",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "44",
     "sdk" : "org.gnome.Sdk",

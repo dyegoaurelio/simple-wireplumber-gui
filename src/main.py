@@ -31,7 +31,7 @@ class SimpleWireplumberGuiApplication(Adw.Application):
     """The main application singleton class."""
 
     def __init__(self):
-        super().__init__(application_id='org.gnome.Example',
+        super().__init__(application_id='io.github.dyegoaurelio.simple-wireplumber-gui',
                          flags=Gio.ApplicationFlags.DEFAULT_FLAGS)
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('about', self.on_about_action)
@@ -52,7 +52,7 @@ class SimpleWireplumberGuiApplication(Adw.Application):
         """Callback for the app.about action."""
         about = Adw.AboutWindow(transient_for=self.props.active_window,
                                 application_name='simple-wireplumber-gui',
-                                application_icon='org.gnome.Example',
+                                application_icon='io.github.dyegoaurelio.simple-wireplumber-gui',
                                 developer_name='dyego',
                                 version='0.1.0',
                                 developers=['dyego'],
