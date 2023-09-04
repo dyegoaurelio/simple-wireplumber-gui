@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=simple-wireplumber-gui
+Name=Simple Wireplumber GUI
 Exec=simple-wireplumber-gui
 Icon=io.github.dyegoaurelio.simple-wireplumber-gui
 Terminal=false
