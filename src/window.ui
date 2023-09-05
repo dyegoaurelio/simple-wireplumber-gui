@@ -9,62 +9,6 @@
     <property name="default-width">600</property>
     <property name="default-height">500</property>
 
-    <!-- First Preferences Page -->
-    <child>
-      <object class="AdwPreferencesPage">
-        <property name="title">Input Devices</property>
-        <property name="icon-name">microphone</property>
-
-        <!-- First Preferences Group on Page 1 -->
-        <child>
-          <object class="AdwPreferencesGroup" id="input_active">
-            <property name="title">Active</property>
-            <property name="description">Active audio input devices</property>
-
-            <child>
-              <object class="AdwActionRow">
-                <property name="title">Example title</property>
-                <property name="subtitle">Example subtitle</property>
-                <child>
-                  <object class="GtkSwitch">
-
-                  </object>
-
-                </child>
-
-                <child>
-                  <object class="GtkToggleButton">
-
-                  </object>
-
-                </child>
-                <child>
-                  <object class="GtkToggleButton">
-
-                  </object>
-
-                </child>
-
-              </object>
-            </child>
-
-          </object>
-        </child>
-
-        <!-- Second Preferences Group on Page 1 -->
-        <child>
-          <object class="AdwPreferencesGroup" id="input_disabled">
-            <property name="title">Disabled</property>
-
-            <!-- Add widgets for appearance settings here -->
-
-          </object>
-        </child>
-
-      </object>
-    </child>
-
-    <!-- Second Preferences Page -->
     <child>
       <object class="AdwPreferencesPage">
         <property name="title">Output Devices</property>
@@ -84,6 +28,29 @@
 
       </object>
     </child>
+
+
+    <child>
+      <object class="AdwPreferencesPage">
+        <property name="title">Input Devices</property>
+        <property name="icon-name">microphone</property>
+
+        <child>
+          <object class="AdwPreferencesGroup" id="input_active">
+            <property name="title">Active</property>
+            <property name="description">Active audio input devices</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="AdwPreferencesGroup" id="input_disabled">
+            <property name="title">Disabled</property>
+          </object>
+        </child>
+
+      </object>
+    </child>
+
 
   </template>
   <menu id="primary_menu">
