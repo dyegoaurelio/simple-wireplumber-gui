@@ -52,7 +52,7 @@
 
         <!-- Second Preferences Group on Page 1 -->
         <child>
-          <object class="AdwPreferencesGroup" id="group1_2">
+          <object class="AdwPreferencesGroup" id="input_disabled">
             <property name="title">Disabled</property>
 
             <!-- Add widgets for appearance settings here -->
