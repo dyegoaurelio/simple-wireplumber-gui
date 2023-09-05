@@ -41,7 +41,8 @@ import re
 
 data = output
 
-pattern = r"id (\d+), type ([\w:\/]+)"
+pattern_ids = r"id (\d+), type ([\w:\/]+)"
+pattern_data = r'(\w+\.\w+)\s*=\s*"([^"]+)"'
 
 parsed_data = {}
 
@@ -55,9 +56,12 @@ def append_last_id_data(current_start: int):
         return
 
     current_data = data[last_match_character:current_start]
+    matches = re.findall(pattern_data, current_data)
+
+    parsed_data[last_match_id].update(dict(matches))
 
 
-for match in re.finditer(pattern, data):
+for match in re.finditer(pattern_ids, data):
     id_, type_ = match.groups()
     parsed_data[id_] = {"type": type_}
     key_value_pairs = []
