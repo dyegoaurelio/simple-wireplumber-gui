@@ -13,10 +13,11 @@
     <child>
       <object class="AdwPreferencesPage" id="page1">
         <property name="title">Input Devices</property>
+        <property name="icon-name">microphone</property>
 
         <!-- First Preferences Group on Page 1 -->
         <child>
-          <object class="AdwPreferencesGroup" id="input_active" >
+          <object class="AdwPreferencesGroup" id="input_active">
             <property name="title">Active</property>
             <property name="description">Active audio input devices</property>
 
@@ -67,6 +68,7 @@
     <child>
       <object class="AdwPreferencesPage" id="page2">
         <property name="title">Output Devices</property>
+        <property name="icon-name">audio-headphones</property>
 
         <!-- First Preferences Group on Page 2 -->
         <child>
