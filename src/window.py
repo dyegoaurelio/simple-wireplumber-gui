@@ -34,6 +34,17 @@ class InputRow(Adw.ActionRow):
     def __init__(self, device: Device, **kwargs):
         super().__init__(title=device.name, **kwargs)
 
+        self.add_suffix(
+            Gtk.Button(icon_name="document-edit", tooltip_text="Rename this device")
+        )
+        self.add_suffix(
+            Gtk.ToggleButton(
+                icon_name="edit-delete",
+                tooltip_text="Hide this device",
+                active=device.hidden,
+            )
+        )
+
 
 @Gtk.Template(resource_path="/org/gnome/Example/window.ui")
 class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
