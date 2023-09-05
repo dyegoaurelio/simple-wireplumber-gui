@@ -7,7 +7,7 @@
     <property name="title">Sample Preferences</property>
     <property name="resizable">True</property>
     <property name="default-width">600</property>
-    <property name="default-height">400</property>
+    <property name="default-height">500</property>
 
     <!-- First Preferences Page -->
     <child>
@@ -16,10 +16,9 @@
 
         <!-- First Preferences Group on Page 1 -->
         <child>
-          <object class="AdwPreferencesGroup">
+          <object class="AdwPreferencesGroup" id="input_active" >
             <property name="title">Active</property>
-            <property name="description">This is an example group in Adw Preferences.</property>
-            <property name="header-suffix">suffix</property>
+            <property name="description">Active audio input devices</property>
 
             <child>
               <object class="AdwActionRow">

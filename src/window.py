@@ -19,12 +19,20 @@
 
 from gi.repository import Adw
 from gi.repository import Gtk
+from .pipewire import active_input_devices
 
-@Gtk.Template(resource_path='/org/gnome/Example/window.ui')
+@Gtk.Template(resource_path="/org/gnome/Example/window.ui")
 class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
-    __gtype_name__ = 'SimpleWireplumberGuiWindow'
+    __gtype_name__ = "SimpleWireplumberGuiWindow"
 
-    label = Gtk.Template.Child()
+    input_active = Gtk.Template.Child()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+        self.add_input_devices()
+
+    def add_input_devices(self):
+        for d in active_input_devices:
+            row = Adw.ActionRow(title=d.name)
+            self.input_active.add(row)
