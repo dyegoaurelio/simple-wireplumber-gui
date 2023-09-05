@@ -28,6 +28,14 @@ from .pipewire import (
 )
 
 
+@Gtk.Template(resource_path="/org/gnome/Example/gtk/edit-device-modal.ui")
+class EditDeviceModal(Adw.Window):
+    __gtype_name__ = "WirepluberEditDeviceModal"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
 class InputRow(Adw.ActionRow):
     __gtype_name__ = "WirepluberInputRow"
 
