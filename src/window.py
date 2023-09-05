@@ -30,7 +30,7 @@ from .pipewire import (
 
 @Gtk.Template(resource_path="/org/gnome/Example/gtk/edit-device-modal.ui")
 class EditDeviceModal(Adw.Window):
-    __gtype_name__ = "WirepluberEditDeviceModal"
+    __gtype_name__ = "EditDeviceModal"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -38,13 +38,16 @@ class EditDeviceModal(Adw.Window):
 
 class InputRow(Adw.ActionRow):
     __gtype_name__ = "WirepluberInputRow"
+    _edit_device_modal: EditDeviceModal
 
     def __init__(self, device: Device, **kwargs):
         super().__init__(title=device.name, **kwargs)
 
-        self.add_suffix(
-            Gtk.Button(icon_name="document-edit", tooltip_text="Rename this device")
+        edit_btn = Gtk.Button(
+            icon_name="document-edit", tooltip_text="Rename this device"
         )
+        edit_btn.connect("clicked", lambda _: self.show_edit_modal())
+        self.add_suffix(edit_btn)
         self.add_suffix(
             Gtk.ToggleButton(
                 icon_name="edit-delete",
@@ -52,6 +55,14 @@ class InputRow(Adw.ActionRow):
                 active=device.hidden,
             )
         )
+
+    def show_edit_modal(self):
+        try:
+            self._edit_device_modal
+        except AttributeError:
+            self._edit_device_modal = EditDeviceModal()
+        
+        self._edit_device_modal.present()
 
 
 @Gtk.Template(resource_path="/org/gnome/Example/window.ui")
