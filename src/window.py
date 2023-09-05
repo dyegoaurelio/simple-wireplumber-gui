@@ -19,7 +19,15 @@
 
 from gi.repository import Adw
 from gi.repository import Gtk
-from .pipewire import active_input_devices, disabled_input_devices
+from .pipewire import active_input_devices, disabled_input_devices, Device
+
+
+class InputRow(Adw.ActionRow):
+    __gtype_name__ = "WirepluberInputRow"
+
+    def __init__(self, device: Device, **kwargs):
+        super().__init__(title=device.name, **kwargs)
+
 
 @Gtk.Template(resource_path="/org/gnome/Example/window.ui")
 class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
@@ -35,10 +43,9 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
 
     def add_input_devices(self):
         for d in active_input_devices:
-            row = Adw.ActionRow(title=d.name)
+            row = InputRow(d)
             self.input_active.add(row)
-        
+
         for d in disabled_input_devices:
-            row = Adw.ActionRow(title=d.name)
+            row = InputRow(d)
             self.input_disabled.add(row)
-            
