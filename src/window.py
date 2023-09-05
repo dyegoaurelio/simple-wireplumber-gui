@@ -32,15 +32,16 @@ from .pipewire import (
 class EditDeviceModal(Adw.Window):
     __gtype_name__ = "EditDeviceModal"
 
-    def __init__(self, **kwargs):
+    def __init__(self, device: Device, **kwargs):
         super().__init__(**kwargs)
 
 
 class InputRow(Adw.ActionRow):
     __gtype_name__ = "WirepluberInputRow"
-    _edit_device_modal: EditDeviceModal
+    device: Device
 
     def __init__(self, device: Device, **kwargs):
+        self.device = device
         super().__init__(title=device.name, **kwargs)
 
         edit_btn = Gtk.Button(
@@ -57,12 +58,7 @@ class InputRow(Adw.ActionRow):
         )
 
     def show_edit_modal(self):
-        try:
-            self._edit_device_modal
-        except AttributeError:
-            self._edit_device_modal = EditDeviceModal()
-        
-        self._edit_device_modal.present()
+        EditDeviceModal(self.device).present()
 
 
 @Gtk.Template(resource_path="/org/gnome/Example/window.ui")

@@ -3,6 +3,23 @@
   <requires lib="gtk" version="4.0" />
   <requires lib="Adw" version="1.0" />
   <template class="EditDeviceModal" parent="AdwWindow">
+    <property name="title">Edit device</property>
+    <property name="resizable">True</property>
+    <property name="destroy-with-parent">False</property>
+    <property name="modal">True</property>
+    <property name="default-width">400</property>
+    <property name="default-height">300</property>
+    <property name="content">
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkHeaderBar" />
+        </child>
+        <child>
+          <!-- ... -->
+        </child>
+      </object>
+    </property>
 
   </template>
 </interface>
