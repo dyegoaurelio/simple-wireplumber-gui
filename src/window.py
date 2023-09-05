@@ -19,7 +19,13 @@
 
 from gi.repository import Adw
 from gi.repository import Gtk
-from .pipewire import active_input_devices, disabled_input_devices, Device
+from .pipewire import (
+    active_input_devices,
+    disabled_input_devices,
+    Device,
+    active_output_devices,
+    disabled_output_devices,
+)
 
 
 class InputRow(Adw.ActionRow):
@@ -36,10 +42,14 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
     input_active = Gtk.Template.Child()
     input_disabled = Gtk.Template.Child()
 
+    output_active = Gtk.Template.Child()
+    output_disabled = Gtk.Template.Child()
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
         self.add_input_devices()
+        self.add_output_devices()
 
     def add_input_devices(self):
         for d in active_input_devices:
@@ -49,3 +59,12 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
         for d in disabled_input_devices:
             row = InputRow(d)
             self.input_disabled.add(row)
+
+    def add_output_devices(self):
+        for d in active_output_devices:
+            row = InputRow(d)
+            self.output_active.add(row)
+
+        for d in disabled_output_devices:
+            row = InputRow(d)
+            self.output_disabled.add(row)

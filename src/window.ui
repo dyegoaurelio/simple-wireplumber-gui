@@ -11,7 +11,7 @@
 
     <!-- First Preferences Page -->
     <child>
-      <object class="AdwPreferencesPage" id="page1">
+      <object class="AdwPreferencesPage">
         <property name="title">Input Devices</property>
         <property name="icon-name">microphone</property>
 
@@ -66,17 +66,19 @@
 
     <!-- Second Preferences Page -->
     <child>
-      <object class="AdwPreferencesPage" id="page2">
+      <object class="AdwPreferencesPage">
         <property name="title">Output Devices</property>
         <property name="icon-name">audio-headphones</property>
 
-        <!-- First Preferences Group on Page 2 -->
         <child>
-          <object class="AdwPreferencesGroup" id="group2_1">
-            <property name="title">Advanced Settings</property>
+          <object class="AdwPreferencesGroup" id="output_active">
+            <property name="title">Active</property>
+          </object>
+        </child>
 
-            <!-- Add widgets for advanced settings here -->
-
+        <child>
+          <object class="AdwPreferencesGroup" id="output_disabled">
+            <property name="title">Disabled</property>
           </object>
         </child>
 
