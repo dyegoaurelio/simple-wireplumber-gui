@@ -30,7 +30,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "file:///home/dyego/coding/random"
+                    "url" : "https://github.com/dyegoaurelio/simple-wireplumber-gui/"
                 }
             ]
         }
