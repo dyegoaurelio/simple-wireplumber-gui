@@ -12,12 +12,12 @@
     <!-- First Preferences Page -->
     <child>
       <object class="AdwPreferencesPage" id="page1">
-        <property name="title">General</property>
+        <property name="title">Input Devices</property>
 
         <!-- First Preferences Group on Page 1 -->
         <child>
           <object class="AdwPreferencesGroup">
-            <property name="title">Example Group</property>
+            <property name="title">Active</property>
             <property name="description">This is an example group in Adw Preferences.</property>
             <property name="header-suffix">suffix</property>
 
@@ -47,13 +47,6 @@
 
               </object>
             </child>
-            <child>
-              <object class="AdwActionRow">
-                <property name="title">Example title</property>
-                <!-- <property name="subtitle">Example subtitle</property> -->
-
-              </object>
-            </child>
 
           </object>
         </child>
@@ -61,7 +54,7 @@
         <!-- Second Preferences Group on Page 1 -->
         <child>
           <object class="AdwPreferencesGroup" id="group1_2">
-            <property name="title">Appearance</property>
+            <property name="title">Disabled</property>
 
             <!-- Add widgets for appearance settings here -->
 
@@ -74,7 +67,7 @@
     <!-- Second Preferences Page -->
     <child>
       <object class="AdwPreferencesPage" id="page2">
-        <property name="title">Advanced</property>
+        <property name="title">Output Devices</property>
 
         <!-- First Preferences Group on Page 2 -->
         <child>
