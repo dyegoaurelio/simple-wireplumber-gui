@@ -9,7 +9,8 @@
         "--socket=wayland",
         "--device=dri",
         "--share=ipc",
-        "--filesystem=xdg-run/pipewire-0"
+        "--filesystem=xdg-run/pipewire-0",
+        "--filesystem=home"
     ],
     "cleanup" : [
         "/include",

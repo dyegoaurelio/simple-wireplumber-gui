@@ -4,6 +4,7 @@
     },
     "python.formatting.provider": "none",
     "cSpell.words": [
-        "pipewire"
+        "pipewire",
+        "wireplumber"
     ]
 }

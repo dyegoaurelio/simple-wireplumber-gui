@@ -30,7 +30,8 @@ simple_wireplumber_gui_sources = [
   '__init__.py',
   'main.py',
   'window.py',
-  'pipewire.py'
+  'pipewire.py',
+  'data_storage.py'
 ]
 
 install_data(simple_wireplumber_gui_sources, install_dir: moduledir)
