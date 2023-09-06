@@ -56,7 +56,7 @@ class EditDeviceModal(Adw.Window):
             return
 
         add_device_device_new_description(self.device_name.get_label(), new_desc)
-        self.destroy()
+        self.activate_action("app.refresh_app")
 
 
 class InputRow(Adw.ActionRow):
@@ -83,7 +83,9 @@ class InputRow(Adw.ActionRow):
         # )
 
     def show_edit_modal(self):
-        EditDeviceModal(self.device).present()
+        _modal = EditDeviceModal(self.device)
+        _modal.set_application(Gtk.Application.get_default())
+        _modal.present()
 
 
 @Gtk.Template(resource_path="/org/gnome/Example/window.ui")

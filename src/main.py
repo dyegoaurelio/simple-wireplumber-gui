@@ -36,6 +36,7 @@ class SimpleWireplumberGuiApplication(Adw.Application):
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('about', self.on_about_action)
         self.create_action('preferences', self.on_preferences_action)
+        self.create_action('refresh_app', self.on_refresh_app)
 
     def do_activate(self):
         """Called when the application is activated.
@@ -47,6 +48,13 @@ class SimpleWireplumberGuiApplication(Adw.Application):
         if not win:
             win = SimpleWireplumberGuiWindow(application=self)
         win.present()
+
+    def on_refresh_app(self, widget, _):
+        win = self.props.active_window
+        if win:
+            win.destroy()
+        
+        self.do_activate()
 
     def on_about_action(self, widget, _):
         """Callback for the app.about action."""
@@ -75,6 +83,7 @@ class SimpleWireplumberGuiApplication(Adw.Application):
         action = Gio.SimpleAction.new(name, None)
         action.connect("activate", callback)
         self.add_action(action)
+        self.create_action
         if shortcuts:
             self.set_accels_for_action(f"app.{name}", shortcuts)
 
