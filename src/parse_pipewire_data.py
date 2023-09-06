@@ -8,6 +8,10 @@ physical_devices_waiting_reboot: List[Device] = []
 
 
 def update_physical_devices_lists():
+    physical_devices_waiting_reboot.clear()
+    physical_devices_successfully_changed.clear()
+    physical_devices_unchanged.clear()
+
     physical_devices = list(
         map(
             lambda d: Device(
