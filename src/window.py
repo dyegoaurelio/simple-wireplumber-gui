@@ -56,6 +56,7 @@ class EditDeviceModal(Adw.Window):
             return
 
         add_device_device_new_description(self.device_name.get_label(), new_desc)
+        self.destroy()
 
 
 class InputRow(Adw.ActionRow):
