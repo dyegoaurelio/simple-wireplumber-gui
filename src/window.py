@@ -59,13 +59,13 @@ class InputRow(Adw.ActionRow):
         )
         edit_btn.connect("clicked", lambda _: self.show_edit_modal())
         self.add_suffix(edit_btn)
-        self.add_suffix(
-            Gtk.ToggleButton(
-                icon_name="edit-delete",
-                tooltip_text="Hide this device",
-                active=device.hidden,
-            )
-        )
+        # self.add_suffix(
+        #     Gtk.ToggleButton(
+        #         icon_name="edit-delete",
+        #         tooltip_text="Hide this device",
+        #         active=device.hidden,
+        #     )
+        # )
 
     def show_edit_modal(self):
         EditDeviceModal(self.device).present()
