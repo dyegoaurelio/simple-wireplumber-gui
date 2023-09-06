@@ -29,6 +29,10 @@ table.insert(alsa_monitor.rules,rule)
 property_template = '      ["{key}"] = "{value}",\n'
 
 
+def sanitize(i: str):
+    return i.replace('"', "")
+
+
 def _apply_new_device_description(data: dict | None):
     if data is None:
         return
@@ -87,8 +91,8 @@ def add_device_device_new_description(device_name: str, new_description: str):
     current_new_descriptions = current_config.get("devices_new_description", {})
 
     current_new_descriptions[device_name] = {
-        "device.description": new_description,
-        "device.nick": new_description,
+        "device.description": sanitize(new_description),
+        "device.nick": sanitize(new_description),
     }
 
     current_config["devices_new_description"] = current_new_descriptions
