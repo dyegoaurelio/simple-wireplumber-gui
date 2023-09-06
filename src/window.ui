@@ -28,7 +28,7 @@
 
         <child>
           <object class="AdwPreferencesGroup" id="physical_successfully_changed">
-            <property name="title">Can change</property>
+            <property name="title">Sucessfully renamed</property>
           </object>
         </child>
 
