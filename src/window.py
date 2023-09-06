@@ -49,6 +49,10 @@ class EditDeviceModal(Adw.Window):
 
         self.device_name.set_label(device.name)
         self.send_btn.connect("clicked", self.save_data)
+        if not device.assigned_description is None:
+            self.new_description.set_text(device.assigned_description)
+        else:
+            self.new_description.set_text(device.description)
 
     def save_data(self, *_):
         new_desc = self.new_description.get_text()
