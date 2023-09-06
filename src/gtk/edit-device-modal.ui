@@ -35,6 +35,11 @@
 
           </object>
         </child>
+        <child>
+          <object class="GtkButton" id="clear_btn" >
+            <property name="label">clear</property>
+          </object>
+        </child>
       </object>
     </property>
 

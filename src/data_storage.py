@@ -3,6 +3,8 @@ import os
 
 current_user = os.popen("echo $USER").read().strip()
 
+CLEAR_DEVICE_DESC_STR = "__CLEAR_DEVICE_DESC_STR__"
+
 # Define the path where the configuration data will be stored
 CONFIG_PATH = f"/home/{current_user}/.config/simple-wireplumber-gui/config.json"
 WIREPLUMBER_CONFIG_FOLDER = f"/home/{current_user}/.config/wireplumber"
@@ -45,6 +47,8 @@ def _apply_new_device_description(data: dict | None):
 
     for name, properties_data in data.items():
         properties = ""
+        if not properties_data.get(CLEAR_DEVICE_DESC_STR, None) is None:
+            continue
 
         for key, value in properties_data.items():
             properties += property_template.format(key=key, value=value)
@@ -86,14 +90,23 @@ def load_config():
         return {}
 
 
-def add_device_device_new_description(device_name: str, new_description: str):
+def add_device_device_new_description(device_name: str, new_description: str | None):
     current_config = load_config()
     current_new_descriptions = current_config.get("devices_new_description", {})
 
-    current_new_descriptions[device_name] = {
-        "device.description": sanitize(new_description),
-        "device.nick": sanitize(new_description),
+    _new_description = (
+        new_description if not new_description is None else CLEAR_DEVICE_DESC_STR
+    )
+
+    new_properties = {
+        "device.description": sanitize(_new_description),
+        "device.nick": sanitize(_new_description),
     }
+
+    if new_description is None:
+        new_properties[CLEAR_DEVICE_DESC_STR] = CLEAR_DEVICE_DESC_STR
+
+    current_new_descriptions[device_name] = new_properties
 
     current_config["devices_new_description"] = current_new_descriptions
 

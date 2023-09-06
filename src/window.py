@@ -42,6 +42,7 @@ class EditDeviceModal(Adw.Window):
     __gtype_name__ = "EditDeviceModal"
     device_name: Gtk.Label = Gtk.Template.Child()
     send_btn: Gtk.Button = Gtk.Template.Child()
+    clear_btn: Gtk.Button = Gtk.Template.Child()
     new_description: Adw.EntryRow = Gtk.Template.Child()
 
     def __init__(self, device: Device, **kwargs):
@@ -49,15 +50,19 @@ class EditDeviceModal(Adw.Window):
 
         self.device_name.set_label(device.name)
         self.send_btn.connect("clicked", self.save_data)
+        self.clear_btn.connect("clicked", self.save_data, True)
         if not device.assigned_description is None:
             self.new_description.set_text(device.assigned_description)
         else:
             self.new_description.set_text(device.description)
 
-    def save_data(self, *_):
-        new_desc = self.new_description.get_text()
-        if len(new_desc) == 0:
-            return
+    def save_data(self, widget, none_desc=False):
+        if not none_desc:
+            new_desc = self.new_description.get_text()
+            if len(new_desc) == 0:
+                return
+        else:
+            new_desc = None
 
         add_device_device_new_description(self.device_name.get_label(), new_desc)
         self.destroy()
