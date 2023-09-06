@@ -4,7 +4,7 @@ import os
 current_user = os.popen("echo $USER").read().strip()
 
 # Define the path where the configuration data will be stored
-CONFIG_PATH = f"/home/{current_user}/config/simple-wireplumber-gui/config.json"
+CONFIG_PATH = f"/home/{current_user}/.config/simple-wireplumber-gui/config.json"
 
 
 def _save_config(data):
