@@ -31,19 +31,31 @@ from .parse_pipewire_data import (
     physical_devices_unchanged,
     physical_devices_waiting_reboot,
     physical_devices_successfully_changed,
-    update_physical_devices_lists
+    update_physical_devices_lists,
 )
+
+from .data_storage import add_device_device_new_description
 
 
 @Gtk.Template(resource_path="/org/gnome/Example/gtk/edit-device-modal.ui")
 class EditDeviceModal(Adw.Window):
     __gtype_name__ = "EditDeviceModal"
     device_name: Gtk.Label = Gtk.Template.Child()
+    send_btn: Gtk.Button = Gtk.Template.Child()
+    new_description: Adw.EntryRow = Gtk.Template.Child()
 
     def __init__(self, device: Device, **kwargs):
         super().__init__(**kwargs)
 
         self.device_name.set_label(device.name)
+        self.send_btn.connect("clicked", self.save_data)
+
+    def save_data(self, *_):
+        new_desc = self.new_description.get_text()
+        if len(new_desc) == 0:
+            return
+
+        add_device_device_new_description(self.device_name.get_label(), new_desc)
 
 
 class InputRow(Adw.ActionRow):
@@ -94,6 +106,7 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
 
     def add_physical_devices(self):
         update_physical_devices_lists()
+
         def add_list(_group: Adw.PreferencesGroup, _list: list):
             if len(_list) == 0:
                 _group.hide()
@@ -102,10 +115,12 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
                 for d in _list:
                     row = InputRow(d)
                     _group.add(row)
-        
+
         add_list(self.physical_unchanged, physical_devices_unchanged)
         add_list(self.physical_waiting_reboot, physical_devices_waiting_reboot)
-        add_list(self.physical_successfully_changed, physical_devices_successfully_changed)
+        add_list(
+            self.physical_successfully_changed, physical_devices_successfully_changed
+        )
 
     def add_input_devices(self):
         for d in active_input_devices:

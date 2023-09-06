@@ -4,7 +4,7 @@ import os
 # Define the path where the configuration data will be stored
 CONFIG_PATH = "~/.config/simple-wireplumber-gui/config.json"
 
-def save_config(data):
+def _save_config(data):
     """
     Save a dictionary as a JSON configuration file.
     
@@ -29,3 +29,13 @@ def load_config():
     except FileNotFoundError:
         print(f"Config file '{CONFIG_PATH}' not found. Returning an empty dictionary.")
         return {}
+
+def add_device_device_new_description(device_name: str, new_description: str):
+    current_config = load_config()
+    current_new_descriptions = current_config.get('devices_new_description', {})
+    
+    current_new_descriptions[device_name] = { "device.description" : new_description}
+    
+    current_config['devices_new_description'] = current_new_descriptions
+    
+    _save_config(current_config)

@@ -30,7 +30,7 @@
         </child>
 
         <child>
-          <object class="GtkButton">
+          <object class="GtkButton" id="send_btn">
             <property name="label">change</property>
 
           </object>
