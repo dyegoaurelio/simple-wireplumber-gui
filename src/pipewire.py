@@ -70,9 +70,9 @@ output_devices = list(
     map(
         lambda d: Device(
             id=d["object.serial"],
-            name=d["device.name"],
-            description=d["device.description"],
-            nick=d["device.name"],
+            name=d.get("device.name", ""),
+            description=d.get("device.description",""),
+            nick=d.get("device.nick", ""),
             hidden=False,
         ),
         get_pipewire_devices_data(),
