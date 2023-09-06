@@ -11,7 +11,27 @@
 
     <child>
       <object class="AdwPreferencesPage">
-        <property name="title">Output Devices</property>
+        <property name="title">Physical Devices </property>
+        <property name="icon-name">audio-card</property>
+
+        <child>
+          <object class="AdwPreferencesGroup" id="physical_waiting_reboot">
+            <property name="title">Waiting reboot</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="AdwPreferencesGroup" id="physical_unchanged">
+            <property name="title">Can change</property>
+          </object>
+        </child>
+
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwPreferencesPage">
+        <property name="title">Output Nodes</property>
         <property name="icon-name">audio-headphones</property>
 
         <child>
@@ -32,7 +52,7 @@
 
     <child>
       <object class="AdwPreferencesPage">
-        <property name="title">Input Devices</property>
+        <property name="title">Input Nodes</property>
         <property name="icon-name">microphone</property>
 
         <child>

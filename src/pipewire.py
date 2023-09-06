@@ -16,11 +16,6 @@ class Device:
     nick: str
 
 
-input_devices: List[Device] = []
-
-output_devices: List[Device] = []
-
-
 def parse_pw_cli_ls_data(data: str) -> Dict[str, Dict[str, str]]:
     parsed_data = {}
 
@@ -66,7 +61,7 @@ def get_pipewire_devices_data():
     return pipewire_devices
 
 
-output_devices = list(
+physical_devices = list(
     map(
         lambda d: Device(
             id=d["object.serial"],
@@ -79,8 +74,11 @@ output_devices = list(
     )
 )
 
-active_input_devices = filter(lambda d: not d.hidden, input_devices)
-disabled_input_devices = filter(lambda d: d.hidden, input_devices)
+physical_devices_unchanged = list(physical_devices)
+physical_devices_waiting_reboot = []
 
-active_output_devices = filter(lambda d: not d.hidden, output_devices)
-disabled_output_devices = filter(lambda d: d.hidden, output_devices)
+active_input_devices = []
+disabled_input_devices = []
+
+active_output_devices = []
+disabled_output_devices = []

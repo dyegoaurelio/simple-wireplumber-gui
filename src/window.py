@@ -25,17 +25,19 @@ from .pipewire import (
     Device,
     active_output_devices,
     disabled_output_devices,
+    physical_devices_unchanged,
+    physical_devices_waiting_reboot
 )
 
 
 @Gtk.Template(resource_path="/org/gnome/Example/gtk/edit-device-modal.ui")
 class EditDeviceModal(Adw.Window):
     __gtype_name__ = "EditDeviceModal"
-    device_id : Gtk.Label = Gtk.Template.Child()
+    device_id: Gtk.Label = Gtk.Template.Child()
 
     def __init__(self, device: Device, **kwargs):
         super().__init__(**kwargs)
-        
+
         self.device_id.set_label(device.id)
 
 
@@ -74,11 +76,28 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
     output_active = Gtk.Template.Child()
     output_disabled = Gtk.Template.Child()
 
+    physical_unchanged: Adw.PreferencesGroup = Gtk.Template.Child()
+    physical_waiting_reboot: Adw.PreferencesGroup = Gtk.Template.Child()
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
         self.add_input_devices()
         self.add_output_devices()
+        self.add_physical_devices()
+
+    def add_physical_devices(self):
+        for d in physical_devices_unchanged:
+            row = InputRow(d)
+            self.physical_unchanged.add(row)
+        
+        if len(physical_devices_waiting_reboot) == 0:
+            self.physical_waiting_reboot.hide()
+        else:
+            self.physical_waiting_reboot.show()
+            for d in physical_devices_waiting_reboot:
+                row = InputRow(d)
+                self.physical_waiting_reboot.add(row)
 
     def add_input_devices(self):
         for d in active_input_devices:
