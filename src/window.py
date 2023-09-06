@@ -65,7 +65,9 @@ class InputRow(Adw.ActionRow):
 
     def __init__(self, device: Device, **kwargs):
         self.device = device
-        super().__init__(title=device.description, **kwargs)
+        super().__init__(
+            title=device.assigned_description or device.description, **kwargs
+        )
 
         edit_btn = Gtk.Button(
             icon_name="document-edit", tooltip_text="Rename this device"
