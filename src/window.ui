@@ -26,6 +26,12 @@
           </object>
         </child>
 
+        <child>
+          <object class="AdwPreferencesGroup" id="physical_successfully_changed">
+            <property name="title">Can change</property>
+          </object>
+        </child>
+
       </object>
     </child>
 

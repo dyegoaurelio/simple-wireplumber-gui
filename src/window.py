@@ -30,6 +30,7 @@ from .pipewire import (
 from .parse_pipewire_data import (
     physical_devices_unchanged,
     physical_devices_waiting_reboot,
+    physical_devices_successfully_changed,
     update_physical_devices_lists
 )
 
@@ -82,6 +83,7 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
 
     physical_unchanged: Adw.PreferencesGroup = Gtk.Template.Child()
     physical_waiting_reboot: Adw.PreferencesGroup = Gtk.Template.Child()
+    physical_successfully_changed: Adw.PreferencesGroup = Gtk.Template.Child()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -92,17 +94,18 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
 
     def add_physical_devices(self):
         update_physical_devices_lists()
-        for d in physical_devices_unchanged:
-            row = InputRow(d)
-            self.physical_unchanged.add(row)
-
-        if len(physical_devices_waiting_reboot) == 0:
-            self.physical_waiting_reboot.hide()
-        else:
-            self.physical_waiting_reboot.show()
-            for d in physical_devices_waiting_reboot:
-                row = InputRow(d)
-                self.physical_waiting_reboot.add(row)
+        def add_list(_group: Adw.PreferencesGroup, _list: list):
+            if len(_list) == 0:
+                _group.hide()
+            else:
+                _group.show()
+                for d in _list:
+                    row = InputRow(d)
+                    _group.add(row)
+        
+        add_list(self.physical_unchanged, physical_devices_unchanged)
+        add_list(self.physical_waiting_reboot, physical_devices_waiting_reboot)
+        add_list(self.physical_successfully_changed, physical_devices_successfully_changed)
 
     def add_input_devices(self):
         for d in active_input_devices:
