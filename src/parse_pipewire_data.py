@@ -1,6 +1,6 @@
 from typing import Dict, List
 from .pipewire import get_pipewire_devices_data, Device
-from .data_storage import load_config
+from .data_storage import load_config, CLEAR_DEVICE_DESC_STR
 
 physical_devices_unchanged: List[Device] = []
 physical_devices_successfully_changed: List[Device] = []
@@ -20,6 +20,7 @@ def update_physical_devices_lists():
                 description=d.get("device.description", ""),
                 nick=d.get("device.nick", ""),
                 hidden=False,
+                raw_data=d,
             ),
             get_pipewire_devices_data(),
         )
@@ -35,7 +36,19 @@ def update_physical_devices_lists():
         if device_config is None:
             physical_devices_unchanged.append(d)
         else:
-            d.assigned_description = device_config.get("device.description", "")
+            if device_config.get(CLEAR_DEVICE_DESC_STR, None) is None:
+                d.assigned_description = device_config.get("device.description", "")
+            else:
+                # this means that the device was marked to be cleared
+                # and is waiting for a reboot to clear the description
+                # or has rebooted and cleared
+                d.assigned_description = None
+                if device_config.get(CLEAR_DEVICE_DESC_STR, None) != d.description:
+                    physical_devices_unchanged.append(d)
+                    continue
+
+                d.description = device_config.get(CLEAR_DEVICE_DESC_STR, "")
+
             if d.assigned_description == d.description:
                 physical_devices_successfully_changed.append(d)
             else:

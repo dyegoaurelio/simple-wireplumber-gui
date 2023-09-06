@@ -44,8 +44,10 @@ class EditDeviceModal(Adw.Window):
     send_btn: Gtk.Button = Gtk.Template.Child()
     clear_btn: Gtk.Button = Gtk.Template.Child()
     new_description: Adw.EntryRow = Gtk.Template.Child()
+    device : Device
 
     def __init__(self, device: Device, **kwargs):
+        self.device = device
         super().__init__(**kwargs)
 
         self.device_name.set_label(device.name)
@@ -64,7 +66,7 @@ class EditDeviceModal(Adw.Window):
         else:
             new_desc = None
 
-        add_device_device_new_description(self.device_name.get_label(), new_desc)
+        add_device_device_new_description(self.device, new_desc)
         self.destroy()
         self.activate_action("app.refresh_app")
 

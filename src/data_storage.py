@@ -90,7 +90,7 @@ def load_config():
         return {}
 
 
-def add_device_device_new_description(device_name: str, new_description: str | None):
+def add_device_device_new_description(device, new_description: str | None):
     current_config = load_config()
     current_new_descriptions = current_config.get("devices_new_description", {})
 
@@ -104,9 +104,9 @@ def add_device_device_new_description(device_name: str, new_description: str | N
     }
 
     if new_description is None:
-        new_properties[CLEAR_DEVICE_DESC_STR] = CLEAR_DEVICE_DESC_STR
+        new_properties[CLEAR_DEVICE_DESC_STR] = device.description
 
-    current_new_descriptions[device_name] = new_properties
+    current_new_descriptions[device.name] = new_properties
 
     current_config["devices_new_description"] = current_new_descriptions
 

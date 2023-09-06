@@ -14,6 +14,7 @@ class Device:
     name: str
     description: str
     nick: str
+    raw_data : Dict[str,str]
     
     assigned_description : Optional[str] = None
 
