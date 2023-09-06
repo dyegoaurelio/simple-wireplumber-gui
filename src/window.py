@@ -38,12 +38,12 @@ from .parse_pipewire_data import (
 @Gtk.Template(resource_path="/org/gnome/Example/gtk/edit-device-modal.ui")
 class EditDeviceModal(Adw.Window):
     __gtype_name__ = "EditDeviceModal"
-    device_id: Gtk.Label = Gtk.Template.Child()
+    device_name: Gtk.Label = Gtk.Template.Child()
 
     def __init__(self, device: Device, **kwargs):
         super().__init__(**kwargs)
 
-        self.device_id.set_label(device.id)
+        self.device_name.set_label(device.name)
 
 
 class InputRow(Adw.ActionRow):

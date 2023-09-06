@@ -31,7 +31,8 @@ def update_physical_devices_lists():
         if device_config is None:
             physical_devices_unchanged.append(d)
         else:
-            if device_config.get("device.description", "") == d.description:
+            d.assigned_description = device_config.get("device.description", "")
+            if d.assigned_description == d.description:
                 physical_devices_successfully_changed.append(d)
             else:
                 physical_devices_waiting_reboot.append(d)

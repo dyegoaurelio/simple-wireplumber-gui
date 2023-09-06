@@ -1,7 +1,7 @@
 import os
 import re
 from dataclasses import dataclass
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 PATTERN_IDS = r"id (\d+), type ([\w:\/]+)"
 PATTERN_DATA = r'(\w+\.\w+)\s*=\s*"([^"]+)"'
@@ -14,6 +14,8 @@ class Device:
     name: str
     description: str
     nick: str
+    
+    assigned_description : Optional[str] = None
 
 
 def parse_pw_cli_ls_data(data: str) -> Dict[str, Dict[str, str]]:

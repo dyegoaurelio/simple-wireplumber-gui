@@ -16,14 +16,24 @@
           <object class="GtkHeaderBar" />
         </child>
         <child>
-
-          <object class="GtkLabel" id="device_id" >
+          <object class="GtkLabel" id="device_name">
             <attributes>
               <attribute name="weight" value="PANGO_WEIGHT_BOLD" />
             </attributes>
           </object>
+        </child>
 
+        <child>
+          <object class="AdwEntryRow" id="new_description">
+            <property name="title">New description</property>
+          </object>
+        </child>
 
+        <child>
+          <object class="GtkButton">
+            <property name="label">change</property>
+
+          </object>
         </child>
       </object>
     </property>
