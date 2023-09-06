@@ -61,22 +61,6 @@ def get_pipewire_devices_data():
     return pipewire_devices
 
 
-physical_devices = list(
-    map(
-        lambda d: Device(
-            id=d["object.serial"],
-            name=d.get("device.name", ""),
-            description=d.get("device.description",""),
-            nick=d.get("device.nick", ""),
-            hidden=False,
-        ),
-        get_pipewire_devices_data(),
-    )
-)
-
-physical_devices_unchanged = list(physical_devices)
-physical_devices_waiting_reboot = []
-
 active_input_devices = []
 disabled_input_devices = []
 

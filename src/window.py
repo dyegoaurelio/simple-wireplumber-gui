@@ -25,8 +25,12 @@ from .pipewire import (
     Device,
     active_output_devices,
     disabled_output_devices,
+)
+
+from .parse_pipewire_data import (
     physical_devices_unchanged,
-    physical_devices_waiting_reboot
+    physical_devices_waiting_reboot,
+    update_physical_devices_lists
 )
 
 
@@ -87,10 +91,11 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
         self.add_physical_devices()
 
     def add_physical_devices(self):
+        update_physical_devices_lists()
         for d in physical_devices_unchanged:
             row = InputRow(d)
             self.physical_unchanged.add(row)
-        
+
         if len(physical_devices_waiting_reboot) == 0:
             self.physical_waiting_reboot.hide()
         else:

@@ -31,6 +31,7 @@ simple_wireplumber_gui_sources = [
   'main.py',
   'window.py',
   'pipewire.py',
+  'parse_pipewire_data.py',
   'data_storage.py'
 ]
 
