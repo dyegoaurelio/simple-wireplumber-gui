@@ -1,8 +1,10 @@
 [Desktop Entry]
-Name=Simple Wireplumber GUI
+Name=Simple Wireplumber
+Comment=A simple GUI for PipeWire
 Exec=simple-wireplumber-gui
 Icon=io.github.dyegoaurelio.simple-wireplumber-gui
 Terminal=false
 Type=Application
-Categories=GTK;
+Categories=AudioVideo;Audio;Utility;GTK;
 StartupNotify=true
+Keywords=PipeWire;Audio;Session Manager;Policy Manager;
