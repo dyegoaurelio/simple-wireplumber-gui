@@ -7,8 +7,8 @@
     <property name="resizable">True</property>
     <property name="destroy-with-parent">False</property>
     <property name="modal">True</property>
-    <property name="default-width">400</property>
-    <property name="default-height">300</property>
+    <property name="default-width">500</property>
+    <property name="default-height">600</property>
     <property name="content">
       <object class="GtkBox">
         <property name="orientation">vertical</property>
@@ -28,8 +28,8 @@
 
         <child>
           <object class="AdwStatusPage">
-            <property name="icon-name">widget-list-symbolic</property>
-            <property name="title" translatable="yes">Lists</property>
+            <property name="icon-name">audio-headset</property>
+            <!-- <property name="title" translatable="yes">Lists</property> -->
             <property name="description" translatable="yes">Rows and helpers for GtkListBox.</property>
 
             <child>
