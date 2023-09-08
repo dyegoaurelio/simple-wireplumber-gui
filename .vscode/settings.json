@@ -4,6 +4,9 @@
     },
     "python.formatting.provider": "none",
     "cSpell.words": [
+        "alsa",
+        "bluetooth",
+        "bluez",
         "pipewire",
         "wireplumber"
     ],

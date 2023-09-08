@@ -19,6 +19,7 @@ def update_physical_devices_lists():
                 name=d.get("device.name", ""),
                 description=d.get("device.description", ""),
                 nick=d.get("device.nick", ""),
+                monitor=d.get("device.name", "alsa").split("_")[0],
                 hidden=False,
                 raw_data=d,
             ),
@@ -32,7 +33,9 @@ def update_physical_devices_lists():
     )
 
     for d in physical_devices:
-        device_config = devices_new_description.get(d.name, None)
+        device_config = devices_new_description.get(d.name, {}).get(
+            "properties_data", None
+        )
         if device_config is None:
             physical_devices_unchanged.append(d)
         else:

@@ -8,9 +8,15 @@ CLEAR_DEVICE_DESC_STR = "__CLEAR_DEVICE_DESC_STR__"
 # Define the path where the configuration data will be stored
 CONFIG_PATH = f"/home/{current_user}/.config/simple-wireplumber-gui/config.json"
 WIREPLUMBER_CONFIG_FOLDER = f"/home/{current_user}/.config/wireplumber"
+WIREPLUMBER_RENAME_DEVICE_FILENAME = "52-SWG-rename-devices.lua"
 WIREPLUMBER_DEVICE_DESCRIPTION_CONFIG_PATH = (
-    f"{WIREPLUMBER_CONFIG_FOLDER}/main.lua.d/52-SWG-rename-devices.lua"
+    f"{WIREPLUMBER_CONFIG_FOLDER}/main.lua.d/{WIREPLUMBER_RENAME_DEVICE_FILENAME}"
 )
+
+WIREPLUMBER_BLUETOOTH_DEVICE_DESCRIPTION_CONFIG_PATH = (
+    f"{WIREPLUMBER_CONFIG_FOLDER}/bluetooth.lua.d/{WIREPLUMBER_RENAME_DEVICE_FILENAME}"
+)
+
 
 change_device_template = """
 rule = {{
@@ -24,7 +30,7 @@ rule = {{
   }},
 }}
 
-table.insert(alsa_monitor.rules,rule)
+table.insert({device_monitor}_monitor.rules,rule)
 
 """
 
@@ -42,10 +48,18 @@ def _apply_new_device_description(data: dict | None):
     os.makedirs(
         os.path.dirname(WIREPLUMBER_DEVICE_DESCRIPTION_CONFIG_PATH), exist_ok=True
     )
+    os.makedirs(
+        os.path.dirname(WIREPLUMBER_BLUETOOTH_DEVICE_DESCRIPTION_CONFIG_PATH),
+        exist_ok=True,
+    )
 
     script_text = ""
+    script_text_bluetooth = ""
 
-    for name, properties_data in data.items():
+    for name, item_data in data.items():
+        properties_data = item_data.get("properties_data")
+        monitor = item_data.get("monitor")
+
         properties = ""
         if not properties_data.get(CLEAR_DEVICE_DESC_STR, None) is None:
             continue
@@ -53,12 +67,19 @@ def _apply_new_device_description(data: dict | None):
         for key, value in properties_data.items():
             properties += property_template.format(key=key, value=value)
 
-        script_text += change_device_template.format(
-            device_name=name, properties=properties
+        parsed_text = change_device_template.format(
+            device_name=name, properties=properties, device_monitor=monitor
         )
+        if monitor == "bluez":
+            script_text_bluetooth += parsed_text
+        else:
+            script_text += parsed_text
 
     with open(WIREPLUMBER_DEVICE_DESCRIPTION_CONFIG_PATH, "w") as f:
         f.write(script_text)
+    
+    with open(WIREPLUMBER_BLUETOOTH_DEVICE_DESCRIPTION_CONFIG_PATH, "w") as f:
+        f.write(script_text_bluetooth)
 
 
 def _save_config(data):
@@ -106,7 +127,10 @@ def add_device_device_new_description(device, new_description: str | None):
     if new_description is None:
         new_properties[CLEAR_DEVICE_DESC_STR] = device.description
 
-    current_new_descriptions[device.name] = new_properties
+    current_new_descriptions[device.name] = {
+        "properties_data": new_properties,
+        "monitor": device.monitor,
+    }
 
     current_config["devices_new_description"] = current_new_descriptions
 
