@@ -30,7 +30,8 @@
           <object class="AdwStatusPage">
             <property name="icon-name">audio-card</property>
             <!-- <property name="title" translatable="yes">Lists</property> -->
-            <!-- <property name="description" translatable="yes">Rows and helpers for GtkListBox.</property> -->
+            <!-- <property name="description" translatable="yes">Rows and helpers for
+            GtkListBox.</property> -->
 
             <child>
               <object class="AdwClamp">
@@ -47,10 +48,14 @@
                         </attributes>
                       </object>
                     </child>
-
                     <child>
-                      <object class="AdwEntryRow" id="new_description">
-                        <property name="title">New description</property>
+
+                      <object class="AdwPreferencesGroup">
+                        <child>
+                          <object class="AdwEntryRow" id="new_description">
+                            <property name="title">New description</property>
+                          </object>
+                        </child>
                       </object>
                     </child>
 

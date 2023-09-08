@@ -46,6 +46,7 @@ class InfoDeviceModal(Adw.Window):
         self.device = device
         super().__init__(**kwargs)
 
+
 @Gtk.Template(resource_path="/org/gnome/Example/gtk/edit-device-modal.ui")
 class EditDeviceModal(Adw.Window):
     __gtype_name__ = "EditDeviceModal"
@@ -96,7 +97,8 @@ class InputRow(Adw.ActionRow):
         edit_btn.connect("clicked", lambda _: self.show_edit_modal())
 
         info_btn = Gtk.Button(
-            label="info", tooltip_text="Show more info about this device"
+            icon_name="help-about-symbolic",
+            tooltip_text="Show more info about this device",
         )
         info_btn.connect("clicked", lambda _: self.show_info_modal())
 
