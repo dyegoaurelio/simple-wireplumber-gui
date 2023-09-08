@@ -13,7 +13,17 @@
       <object class="GtkBox">
         <property name="orientation">vertical</property>
         <child>
-          <object class="AdwHeaderBar" />
+          <object class="AdwHeaderBar">
+            <child type="start">
+              <object class="GtkButton" id="clear_btn">
+                <property name="tooltip-text">Clear changes</property>
+                <property name="icon-name" >user-trash-symbolic</property>
+                <style>
+                  <class name="destructive-action" />
+                </style>
+              </object>
+            </child>
+          </object>
         </child>
         <child>
           <object class="GtkLabel" id="device_name">
@@ -32,12 +42,9 @@
         <child>
           <object class="GtkButton" id="send_btn">
             <property name="label">change</property>
-
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="clear_btn" >
-            <property name="label">clear</property>
+            <style>
+              <class name="suggested-action" />
+            </style>
           </object>
         </child>
       </object>
