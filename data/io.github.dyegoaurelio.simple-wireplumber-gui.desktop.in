@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Simple Wireplumber
+Name=Simple Wireplumber GUI
 Comment=A simple GUI for PipeWire
 Exec=simple-wireplumber-gui
 Icon=io.github.dyegoaurelio.simple-wireplumber-gui
