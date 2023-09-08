@@ -20,7 +20,7 @@
           <object class="AdwBin">
             <property name="child">
               <object class="AdwStatusPage">
-                <property name="icon-name">audio-headset</property>
+                <property name="icon-name">audio-card</property>
                 <property name="title" translatable="yes">Lists</property>
                 <property name="description" translatable="yes">Rows and helpers for GtkListBox.</property>
                 <property name="child">
