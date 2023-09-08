@@ -17,7 +17,7 @@
             <child type="start">
               <object class="GtkButton" id="clear_btn">
                 <property name="tooltip-text">Clear changes</property>
-                <property name="icon-name" >user-trash-symbolic</property>
+                <property name="icon-name">user-trash-symbolic</property>
                 <style>
                   <class name="destructive-action" />
                 </style>
@@ -25,28 +25,51 @@
             </child>
           </object>
         </child>
+
         <child>
-          <object class="GtkLabel" id="device_name">
-            <attributes>
-              <attribute name="weight" value="PANGO_WEIGHT_BOLD" />
-            </attributes>
+          <object class="AdwStatusPage">
+            <property name="icon-name">widget-list-symbolic</property>
+            <property name="title" translatable="yes">Lists</property>
+            <property name="description" translatable="yes">Rows and helpers for GtkListBox.</property>
+
+            <child>
+              <object class="AdwClamp">
+                <property name="maximum-size">400</property>
+                <property name="tightening-threshold">300</property>
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">12</property>
+                    <child>
+                      <object class="GtkLabel" id="device_name">
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_BOLD" />
+                        </attributes>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="AdwEntryRow" id="new_description">
+                        <property name="title">New description</property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="GtkButton" id="send_btn">
+                        <property name="label">change</property>
+                        <style>
+                          <class name="suggested-action" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
           </object>
         </child>
 
-        <child>
-          <object class="AdwEntryRow" id="new_description">
-            <property name="title">New description</property>
-          </object>
-        </child>
 
-        <child>
-          <object class="GtkButton" id="send_btn">
-            <property name="label">change</property>
-            <style>
-              <class name="suggested-action" />
-            </style>
-          </object>
-        </child>
       </object>
     </property>
 
