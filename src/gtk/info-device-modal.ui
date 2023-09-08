@@ -1,32 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-    <requires lib="gtk" version="4.0" />
-    <requires lib="Adw" version="1.0" />
-    <template class="InfoDeviceModal" parent="AdwWindow">
-        <property name="title">Edit device</property>
-        <property name="resizable">True</property>
-        <property name="destroy-with-parent">False</property>
-        <property name="modal">True</property>
-        <property name="default-width">400</property>
-        <property name="default-height">300</property>
-        <property name="content">
-            <object class="GtkBox">
-                <property name="orientation">vertical</property>
-                <child>
-                    <object class="GtkHeaderBar" />
-                </child>
-                <child>
-                    <object class="GtkLabel">
-                        <attributes>
-                            <attribute name="weight" value="PANGO_WEIGHT_BOLD" />
-                        </attributes>
-                        <property name="label">
-                            info
-                        </property>
-                    </object>
-                </child>
-            </object>
-        </property>
+  <requires lib="gtk" version="4.0" />
+  <requires lib="Adw" version="1.0" />
+  <template class="InfoDeviceModal" parent="AdwWindow">
+    <property name="title">Device Info</property>
+    <property name="resizable">True</property>
+    <property name="destroy-with-parent">False</property>
+    <property name="modal">True</property>
+    <property name="default-width">500</property>
+    <property name="default-height">500</property>
+    <property name="content">
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="AdwHeaderBar" />
+        </child>
+        <child>
 
-    </template>
+          <object class="AdwBin">
+            <property name="child">
+              <object class="AdwStatusPage">
+                <property name="icon-name">audio-headset</property>
+                <property name="title" translatable="yes">Lists</property>
+                <property name="description" translatable="yes">Rows and helpers for GtkListBox.</property>
+                <property name="child">
+                  <object class="AdwClamp">
+                    <property name="maximum-size">500</property>
+                    <property name="tightening-threshold">300</property>
+                    <property name="child">
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">12</property>
+                        <child>
+                          <object class="AdwPreferencesGroup">
+                            <property name="title" translatable="yes">Property Rows</property>
+                            <child>
+                              <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Property Row</property>
+                                <property name="subtitle">Value</property>
+                                <property name="subtitle-selectable">True</property>
+                                <style>
+                                  <class name="property" />
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </property>
+                  </object>
+                </property>
+              </object>
+            </property>
+          </object>
+
+        </child>
+      </object>
+    </property>
+
+  </template>
 </interface>
