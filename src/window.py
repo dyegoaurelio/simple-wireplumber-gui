@@ -41,10 +41,24 @@ from .data_storage import add_device_device_new_description
 class InfoDeviceModal(Adw.Window):
     __gtype_name__ = "InfoDeviceModal"
     device: Device
+    page: Adw.StatusPage = Gtk.Template.Child()
+    rows_wrapper_id: Adw.PreferencesGroup = Gtk.Template.Child()
 
     def __init__(self, device: Device, **kwargs):
         self.device = device
         super().__init__(**kwargs)
+
+        self.page.set_title(device.assigned_description or device.description)
+        self.page.set_description(device.name)
+
+        for key, data in reversed(device.raw_data.items()):
+            self.rows_wrapper_id.add(
+                Adw.ActionRow(
+                    title=key,
+                    subtitle=data,
+                    subtitle_selectable=True,
+                )
+            )
 
 
 @Gtk.Template(resource_path="/org/gnome/Example/gtk/edit-device-modal.ui")

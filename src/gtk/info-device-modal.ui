@@ -19,10 +19,8 @@
 
           <object class="AdwBin">
             <property name="child">
-              <object class="AdwStatusPage">
+              <object class="AdwStatusPage" id="page">
                 <property name="icon-name">audio-card</property>
-                <property name="title" translatable="yes">Lists</property>
-                <property name="description" translatable="yes">Rows and helpers for GtkListBox.</property>
                 <property name="child">
                   <object class="AdwClamp">
                     <property name="maximum-size">500</property>
@@ -32,18 +30,8 @@
                         <property name="orientation">vertical</property>
                         <property name="spacing">12</property>
                         <child>
-                          <object class="AdwPreferencesGroup">
+                          <object class="AdwPreferencesGroup" id="rows_wrapper_id">
                             <property name="title" translatable="yes">Property Rows</property>
-                            <child>
-                              <object class="AdwActionRow">
-                                <property name="title" translatable="yes">Property Row</property>
-                                <property name="subtitle">Value</property>
-                                <property name="subtitle-selectable">True</property>
-                                <style>
-                                  <class name="property" />
-                                </style>
-                              </object>
-                            </child>
                           </object>
                         </child>
                       </object>
