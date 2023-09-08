@@ -37,6 +37,15 @@ from .parse_pipewire_data import (
 from .data_storage import add_device_device_new_description
 
 
+@Gtk.Template(resource_path="/org/gnome/Example/gtk/info-device-modal.ui")
+class InfoDeviceModal(Adw.Window):
+    __gtype_name__ = "InfoDeviceModal"
+    device: Device
+
+    def __init__(self, device: Device, **kwargs):
+        self.device = device
+        super().__init__(**kwargs)
+
 @Gtk.Template(resource_path="/org/gnome/Example/gtk/edit-device-modal.ui")
 class EditDeviceModal(Adw.Window):
     __gtype_name__ = "EditDeviceModal"
@@ -44,7 +53,7 @@ class EditDeviceModal(Adw.Window):
     send_btn: Gtk.Button = Gtk.Template.Child()
     clear_btn: Gtk.Button = Gtk.Template.Child()
     new_description: Adw.EntryRow = Gtk.Template.Child()
-    device : Device
+    device: Device
 
     def __init__(self, device: Device, **kwargs):
         self.device = device
@@ -85,6 +94,13 @@ class InputRow(Adw.ActionRow):
             icon_name="document-edit", tooltip_text="Rename this device"
         )
         edit_btn.connect("clicked", lambda _: self.show_edit_modal())
+
+        info_btn = Gtk.Button(
+            label="info", tooltip_text="Show more info about this device"
+        )
+        info_btn.connect("clicked", lambda _: self.show_info_modal())
+
+        self.add_suffix(info_btn)
         self.add_suffix(edit_btn)
         # self.add_suffix(
         #     Gtk.ToggleButton(
@@ -93,6 +109,11 @@ class InputRow(Adw.ActionRow):
         #         active=device.hidden,
         #     )
         # )
+
+    def show_info_modal(self):
+        _modal = InfoDeviceModal(self.device)
+        _modal.set_application(Gtk.Application.get_default())
+        _modal.present()
 
     def show_edit_modal(self):
         _modal = EditDeviceModal(self.device)
