@@ -2,6 +2,14 @@
 <component type="desktop">
 	<name>Simple Wireplumber GUI</name>
 	<id>io.github.dyegoaurelio.simple-wireplumber-gui.desktop</id>
+	<developer_name>Dyego Aurélio</developer_name>
+	<screenshots>
+		<screenshot type="default">
+			<image>
+				https://raw.githubusercontent.com/dyegoaurelio/simple-wireplumber-gui/master/data/screenshots/main-window.png</image>
+			<caption>Main window</caption>
+		</screenshot>
+	</screenshots>
 	<releases>
 		<release version="0.1" date="2023-09-08">
 			<description>
@@ -23,4 +31,7 @@
 		your audio devices if you're running `pipewire` as your audio server and `wireplumber` as
 		it's session and policy manager. </description>
 	<content_rating type="oars-1.1" />
+
+	<launchable type="desktop-id">io.github.dyegoaurelio.simple-wireplumber-gui.desktop</launchable>
+
 </component>
