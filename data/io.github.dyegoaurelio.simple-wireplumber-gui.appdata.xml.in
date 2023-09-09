@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
+	<name>Simple Wireplumber GUI</name>
 	<id>io.github.dyegoaurelio.simple-wireplumber-gui.desktop</id>
+	<release>
+		0.1.1
+	</release>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
+	<url>https://github.com/dyegoaurelio/simple-wireplumber-gui/</url>
+	<summary>
+		A simple GTK4 GUI for PipeWire
+	</summary>
 	<description>
-	  <p>No description</p>
-	</description>
+		<p>Simple Wireplumber GUI</p> With this tool you can easily rename and see the properties of
+		your audio devices if you're running `pipewire` as your audio server and `wireplumber` as
+		it's session and policy manager. </description>
+	<content_rating type="oars-1.1" />
 </component>
