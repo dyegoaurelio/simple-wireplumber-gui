@@ -1,12 +1,13 @@
 import json
 import os
 
-home_folder = os.popen("echo $HOME").read().strip()
+home_folder = os.environ.get("HOME")
+xdg_config = os.environ.get("XDG_CONFIG_HOME")
 
 CLEAR_DEVICE_DESC_STR = "__CLEAR_DEVICE_DESC_STR__"
 
 # Define the path where the configuration data will be stored
-CONFIG_PATH = f"{home_folder}/.config/simple-wireplumber-gui/config.json"
+CONFIG_PATH = f"{xdg_config}/.config/simple-wireplumber-gui/config.json"
 WIREPLUMBER_CONFIG_FOLDER = f"{home_folder}/.config/wireplumber"
 
 WIREPLUMBER_RENAME_DEVICE_FILENAME = "52-SWG-rename-devices.lua"

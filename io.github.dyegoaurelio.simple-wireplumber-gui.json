@@ -10,7 +10,7 @@
         "--device=dri",
         "--share=ipc",
         "--filesystem=xdg-run/pipewire-0",
-        "--filesystem=~/.config/simple-wireplumber-gui/",
+        "--filesystem=xdg-config",
         "--filesystem=~/.config/wireplumber/"
     ],
     "cleanup" : [
