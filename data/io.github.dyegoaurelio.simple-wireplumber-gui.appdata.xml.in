@@ -11,7 +11,10 @@
 	</releases>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
-	<url>https://github.com/dyegoaurelio/simple-wireplumber-gui/</url>
+
+	<url type="homepage">https://github.com/dyegoaurelio/simple-wireplumber-gui</url>
+	<url type="bugtracker">https://github.com/dyegoaurelio/simple-wireplumber-gui/issues</url>
+
 	<summary>
 		A simple GTK4 GUI for PipeWire
 	</summary>
