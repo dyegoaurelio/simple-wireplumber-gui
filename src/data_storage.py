@@ -1,13 +1,14 @@
 import json
 import os
 
-current_user = os.popen("echo $USER").read().strip()
+home_folder = os.popen("echo $HOME").read().strip()
 
 CLEAR_DEVICE_DESC_STR = "__CLEAR_DEVICE_DESC_STR__"
 
 # Define the path where the configuration data will be stored
-CONFIG_PATH = f"/home/{current_user}/.config/simple-wireplumber-gui/config.json"
-WIREPLUMBER_CONFIG_FOLDER = f"/home/{current_user}/.config/wireplumber"
+CONFIG_PATH = f"{home_folder}/.config/simple-wireplumber-gui/config.json"
+WIREPLUMBER_CONFIG_FOLDER = f"{home_folder}/.config/wireplumber"
+
 WIREPLUMBER_RENAME_DEVICE_FILENAME = "52-SWG-rename-devices.lua"
 WIREPLUMBER_DEVICE_DESCRIPTION_CONFIG_PATH = (
     f"{WIREPLUMBER_CONFIG_FOLDER}/main.lua.d/{WIREPLUMBER_RENAME_DEVICE_FILENAME}"
@@ -77,7 +78,7 @@ def _apply_new_device_description(data: dict | None):
 
     with open(WIREPLUMBER_DEVICE_DESCRIPTION_CONFIG_PATH, "w") as f:
         f.write(script_text)
-    
+
     with open(WIREPLUMBER_BLUETOOTH_DEVICE_DESCRIPTION_CONFIG_PATH, "w") as f:
         f.write(script_text_bluetooth)
 
