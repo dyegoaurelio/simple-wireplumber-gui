@@ -1,2 +1,3 @@
 venv
 .flatpak
+**__pycache__
