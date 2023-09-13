@@ -7,4 +7,4 @@ Terminal=false
 Type=Application
 Categories=AudioVideo;Audio;Utility;GTK;
 StartupNotify=true
-Keywords=PipeWire;Audio;Session Manager;Policy Manager;
+Keywords=PipeWire;Audio;Session Manager;Sound Configuration;Devices;
