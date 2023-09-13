@@ -17,12 +17,14 @@
         <child>
           <object class="AdwPreferencesGroup" id="physical_waiting_reboot">
             <property name="title">Waiting reboot</property>
+            <property name="description">You need to reboot your system to apply these changes</property>
           </object>
         </child>
 
         <child>
           <object class="AdwPreferencesGroup" id="physical_unchanged">
-            <property name="title">Can change</property>
+            <property name="title">Unchanged devices</property>
+            <property name="description">Audio devices avaliable to be edited</property>
           </object>
         </child>
 
@@ -40,9 +42,22 @@
         <property name="title">Output Nodes</property>
         <property name="icon-name">audio-headphones</property>
 
+        <child type="start">
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="AdwBanner">
+                <property name="title">Editing output nodes will be available on future relases</property>
+                <property name="revealed">true</property>
+              </object>
+            </child>
+          </object>
+        </child>
+
         <child>
           <object class="AdwPreferencesGroup" id="output_active">
             <property name="title">Active</property>
+            <property name="description">Active audio input nodes</property>
           </object>
         </child>
 
@@ -61,10 +76,23 @@
         <property name="title">Input Nodes</property>
         <property name="icon-name">microphone</property>
 
+        <child type="start">
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="AdwBanner">
+                <property name="title">Editing input nodes will be available on future relases</property>
+                <property name="revealed">true</property>
+              </object>
+            </child>
+          </object>
+        </child>
+
+
         <child>
           <object class="AdwPreferencesGroup" id="input_active">
             <property name="title">Active</property>
-            <property name="description">Active audio input devices</property>
+            <property name="description">Active audio input nodes</property>
           </object>
         </child>
 
