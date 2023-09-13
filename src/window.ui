@@ -51,19 +51,26 @@
                 <property name="revealed">true</property>
               </object>
             </child>
-          </object>
-        </child>
 
-        <child>
-          <object class="AdwPreferencesGroup" id="output_active">
-            <property name="title">Active</property>
-            <property name="description">Active audio input nodes</property>
-          </object>
-        </child>
 
-        <child>
-          <object class="AdwPreferencesGroup" id="output_disabled">
-            <property name="title">Disabled</property>
+            <child>
+              <object class="AdwPreferencesPage">
+                <child>
+                  <object class="AdwPreferencesGroup" id="output_active">
+                    <property name="title">Active</property>
+                    <property name="description">Active audio input nodes</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwPreferencesGroup" id="output_disabled">
+                    <property name="title">Disabled</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+
           </object>
         </child>
 
@@ -85,20 +92,25 @@
                 <property name="revealed">true</property>
               </object>
             </child>
-          </object>
-        </child>
+
+            <child>
+              <object class="AdwPreferencesPage">
+                <child>
+                  <object class="AdwPreferencesGroup" id="input_active">
+                    <property name="title">Active</property>
+                    <property name="description">Active audio input nodes</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwPreferencesGroup" id="input_disabled">
+                    <property name="title">Disabled</property>
+                  </object>
+                </child>
+              </object>
+            </child>
 
 
-        <child>
-          <object class="AdwPreferencesGroup" id="input_active">
-            <property name="title">Active</property>
-            <property name="description">Active audio input nodes</property>
-          </object>
-        </child>
-
-        <child>
-          <object class="AdwPreferencesGroup" id="input_disabled">
-            <property name="title">Disabled</property>
           </object>
         </child>
 
