@@ -57,14 +57,14 @@
               <object class="AdwPreferencesPage">
                 <child>
                   <object class="AdwPreferencesGroup" id="output_active">
-                    <property name="title">Active</property>
-                    <property name="description">Active audio input nodes</property>
+                    <!-- <property name="title">Active</property> -->
+                    <!-- <property name="description">Active audio input nodes</property> -->
                   </object>
                 </child>
 
                 <child>
                   <object class="AdwPreferencesGroup" id="output_disabled">
-                    <property name="title">Disabled</property>
+                    <!-- <property name="title">Disabled</property> -->
                   </object>
                 </child>
               </object>
@@ -97,14 +97,14 @@
               <object class="AdwPreferencesPage">
                 <child>
                   <object class="AdwPreferencesGroup" id="input_active">
-                    <property name="title">Active</property>
-                    <property name="description">Active audio input nodes</property>
+                    <!-- <property name="title">Active</property> -->
+                    <!-- <property name="description">Active audio input nodes</property> -->
                   </object>
                 </child>
 
                 <child>
                   <object class="AdwPreferencesGroup" id="input_disabled">
-                    <property name="title">Disabled</property>
+                    <!-- <property name="title">Disabled</property> -->
                   </object>
                 </child>
               </object>
