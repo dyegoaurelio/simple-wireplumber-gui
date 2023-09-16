@@ -100,16 +100,19 @@ class InputRow(Adw.ActionRow):
     __gtype_name__ = "WirepluberInputRow"
     device: Device
 
-    def __init__(self, device: Device, **kwargs):
+    def __init__(self, device: Device, can_edit_device=True, **kwargs):
         self.device = device
         super().__init__(
             title=device.assigned_description or device.description, **kwargs
         )
 
-        edit_btn = Gtk.Button(
-            icon_name="document-edit", tooltip_text="Rename this device"
-        )
-        edit_btn.connect("clicked", lambda _: self.show_edit_modal())
+        self.can_edit_device = can_edit_device
+        if self.can_edit_device:
+            edit_btn = Gtk.Button(
+                icon_name="document-edit", tooltip_text="Rename this device"
+            )
+            edit_btn.connect("clicked", lambda _: self.show_edit_modal())
+            self.add_suffix(edit_btn)
 
         info_btn = Gtk.Button(
             icon_name="help-about-symbolic",
@@ -118,7 +121,6 @@ class InputRow(Adw.ActionRow):
         info_btn.connect("clicked", lambda _: self.show_info_modal())
 
         self.add_suffix(info_btn)
-        self.add_suffix(edit_btn)
         # self.add_suffix(
         #     Gtk.ToggleButton(
         #         icon_name="edit-delete",
@@ -179,19 +181,19 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
 
     def add_input_devices(self):
         for d in active_input_devices:
-            row = InputRow(d)
+            row = InputRow(d, can_edit_device=False)
             self.input_active.add(row)
 
         for d in disabled_input_devices:
-            row = InputRow(d)
+            row = InputRow(d, can_edit_device=False)
             self.input_disabled.add(row)
 
     def add_output_devices(self):
         update_output_nodes_list()
         for d in active_output_devices:
-            row = InputRow(d)
+            row = InputRow(d, can_edit_device=False)
             self.output_active.add(row)
 
         for d in disabled_output_devices:
-            row = InputRow(d)
+            row = InputRow(d, can_edit_device=False)
             self.output_disabled.add(row)
