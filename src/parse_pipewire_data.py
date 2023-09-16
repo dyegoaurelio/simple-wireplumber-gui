@@ -1,13 +1,44 @@
 from typing import Dict, List
-from .pipewire import get_pipewire_devices_data, Device, get_pipewire_output_nodes
+from .pipewire import (
+    get_pipewire_devices_data,
+    Device,
+    get_pipewire_output_nodes,
+    get_pipewire_input_nodes,
+)
 from .data_storage import load_config, CLEAR_DEVICE_DESC_STR
 
 active_output_devices: List[Device] = []
 disabled_output_devices: List[Device] = []
 
+active_input_devices: List[Device] = []
+disabled_input_devices: List[Device] = []
+
 physical_devices_unchanged: List[Device] = []
 physical_devices_successfully_changed: List[Device] = []
 physical_devices_waiting_reboot: List[Device] = []
+
+parse_node = lambda d: Device(
+    id=d.get("device.id", ""),
+    name=d.get("node.name", ""),
+    description=d.get("node.description", ""),
+    nick=d.get("node.nick", ""),
+    monitor=d.get("node.name", "alsa").split("_")[0],
+    hidden=False,
+    raw_data=d,
+)
+
+
+def update_input_nodes_list():
+    active_input_devices.clear()
+    disabled_input_devices.clear()
+
+    input_nodes = map(parse_node, get_pipewire_input_nodes())
+
+    for i in input_nodes:
+        if i.hidden:
+            disabled_input_devices.append(i)
+        else:
+            active_input_devices.append(i)
 
 
 def update_output_nodes_list():
@@ -16,15 +47,7 @@ def update_output_nodes_list():
 
     output_nodes = list(
         map(
-            lambda d: Device(
-                id=d.get("device.id", ""),
-                name=d.get("node.name", ""),
-                description=d.get("node.description", ""),
-                nick=d.get("node.nick", ""),
-                monitor=d.get("node.name", "alsa").split("_")[0],
-                hidden=False,
-                raw_data=d,
-            ),
+            parse_node,
             get_pipewire_output_nodes(),
         )
     )

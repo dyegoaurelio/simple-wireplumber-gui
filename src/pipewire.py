@@ -70,5 +70,6 @@ def get_pipewire_devices_data():
 def get_pipewire_output_nodes():
     return filter_pipewire_objects("Audio/Sink")
 
-active_input_devices = []
-disabled_input_devices = []
+
+def get_pipewire_input_nodes():
+    return filter_pipewire_objects("Audio/Source")

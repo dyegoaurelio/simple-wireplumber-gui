@@ -20,8 +20,6 @@
 from gi.repository import Adw
 from gi.repository import Gtk
 from .pipewire import (
-    active_input_devices,
-    disabled_input_devices,
     Device,
 )
 
@@ -33,6 +31,9 @@ from .parse_pipewire_data import (
     active_output_devices,
     update_output_nodes_list,
     disabled_output_devices,
+    active_input_devices,
+    disabled_input_devices,
+    update_input_nodes_list,
 )
 
 from .data_storage import add_device_device_new_description
@@ -180,6 +181,7 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
         )
 
     def add_input_devices(self):
+        update_input_nodes_list()
         for d in active_input_devices:
             row = InputRow(d, can_edit_device=False)
             self.input_active.add(row)
