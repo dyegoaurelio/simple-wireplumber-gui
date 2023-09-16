@@ -23,8 +23,6 @@ from .pipewire import (
     active_input_devices,
     disabled_input_devices,
     Device,
-    active_output_devices,
-    disabled_output_devices,
 )
 
 from .parse_pipewire_data import (
@@ -32,6 +30,9 @@ from .parse_pipewire_data import (
     physical_devices_waiting_reboot,
     physical_devices_successfully_changed,
     update_physical_devices_lists,
+    active_output_devices,
+    update_output_nodes_list,
+    disabled_output_devices,
 )
 
 from .data_storage import add_device_device_new_description
@@ -186,6 +187,7 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
             self.input_disabled.add(row)
 
     def add_output_devices(self):
+        update_output_nodes_list()
         for d in active_output_devices:
             row = InputRow(d)
             self.output_active.add(row)

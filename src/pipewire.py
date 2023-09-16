@@ -15,9 +15,9 @@ class Device:
     description: str
     nick: str
     monitor: str
-    raw_data : Dict[str,str]
-    
-    assigned_description : Optional[str] = None
+    raw_data: Dict[str, str]
+
+    assigned_description: Optional[str] = None
 
 
 def parse_pw_cli_ls_data(data: str) -> Dict[str, Dict[str, str]]:
@@ -54,19 +54,21 @@ def get_pipewire_objects_data():
     return parse_pw_cli_ls_data(stream.read())
 
 
-def get_pipewire_devices_data():
+def filter_pipewire_objects(value: str, key="media.class"):
     pipewire_objects = get_pipewire_objects_data()
 
-    pipewire_devices = filter(
-        lambda obj: obj.get("media.class") == "Audio/Device",
+    return filter(
+        lambda obj: obj.get(key) == value,
         pipewire_objects.values(),
     )
 
-    return pipewire_devices
 
+def get_pipewire_devices_data():
+    return filter_pipewire_objects("Audio/Device")
+
+
+def get_pipewire_output_nodes():
+    return filter_pipewire_objects("Audio/Sink")
 
 active_input_devices = []
 disabled_input_devices = []
-
-active_output_devices = []
-disabled_output_devices = []

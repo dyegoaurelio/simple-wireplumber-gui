@@ -1,10 +1,39 @@
 from typing import Dict, List
-from .pipewire import get_pipewire_devices_data, Device
+from .pipewire import get_pipewire_devices_data, Device, get_pipewire_output_nodes
 from .data_storage import load_config, CLEAR_DEVICE_DESC_STR
+
+active_output_devices: List[Device] = []
+disabled_output_devices: List[Device] = []
 
 physical_devices_unchanged: List[Device] = []
 physical_devices_successfully_changed: List[Device] = []
 physical_devices_waiting_reboot: List[Device] = []
+
+
+def update_output_nodes_list():
+    active_output_devices.clear()
+    disabled_output_devices.clear()
+
+    output_nodes = list(
+        map(
+            lambda d: Device(
+                id=d.get("device.id", ""),
+                name=d.get("node.name", ""),
+                description=d.get("node.description", ""),
+                nick=d.get("node.nick", ""),
+                monitor=d.get("node.name", "alsa").split("_")[0],
+                hidden=False,
+                raw_data=d,
+            ),
+            get_pipewire_output_nodes(),
+        )
+    )
+
+    for o in output_nodes:
+        if o.hidden:
+            disabled_output_devices.append(o)
+        else:
+            active_output_devices.append(o)
 
 
 def update_physical_devices_lists():
