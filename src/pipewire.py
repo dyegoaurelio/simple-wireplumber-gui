@@ -91,7 +91,7 @@ def get_pipewire_default_devices():
         r"key:\'(default\.configured\.audio\.(?:sink|source))\' value:\'({[^}]+})\'"
     )
 
-    result_dict: Dict[str, str] = {}
+    result_dict: Dict[str, Dict[str,str]] = {}
 
     if result.returncode == 0:
         matches = re.findall(pattern, result.stdout)

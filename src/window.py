@@ -98,6 +98,7 @@ class EditDeviceModal(Adw.Window):
 class InputRow(Adw.ActionRow):
     __gtype_name__ = "WirepluberInputRow"
     device: Device
+    default_device_indicator: Gtk.Button
 
     def __init__(self, device: Device, can_edit_device=True, **kwargs):
         self.device = device
@@ -120,6 +121,14 @@ class InputRow(Adw.ActionRow):
         info_btn.connect("clicked", lambda _: self.show_info_modal())
 
         self.add_suffix(info_btn)
+
+        self.default_device_indicator = Gtk.Button(
+            icon_name="help-about-symbolic",
+            tooltip_text="Show more info about this device",
+        )
+
+        self.add_prefix(self.default_device_indicator)
+        self.default_device_indicator.hide()
         # self.add_suffix(
         #     Gtk.ToggleButton(
         #         icon_name="edit-delete",
@@ -137,6 +146,12 @@ class InputRow(Adw.ActionRow):
         _modal = EditDeviceModal(self.device)
         _modal.set_application(Gtk.Application.get_default())
         _modal.present()
+
+    def set_is_default_device(self, value: bool):
+        if value:
+            self.default_device_indicator.show()
+        else:
+            self.default_device_indicator.hide()
 
 
 @Gtk.Template(resource_path="/org/gnome/Example/window.ui")
@@ -208,7 +223,14 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
             )
             _child: InputRow | None = output_devices_wrapper.get_first_child()
 
+            current_default_output = devices.get(
+                "default.configured.audio.sink", {}
+            ).get("name")
+
             while _child:
+                _child.set_is_default_device(
+                    current_default_output == _child.device.name
+                )
                 _child = _child.get_next_sibling()
 
         except Exception as e:
