@@ -249,7 +249,7 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
                 )
                 _child = _child.get_next_sibling()
 
-            current_default_input = current_default_output = devices.get(
+            current_default_input = devices.get(
                 "default.configured.audio.source", {}
             ).get("name")
 
