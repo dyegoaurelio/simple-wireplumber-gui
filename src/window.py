@@ -18,10 +18,8 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from gi.repository import Adw
-from gi.repository import Gtk
-from .pipewire import (
-    Device,
-)
+from gi.repository import Gtk, GLib
+from .pipewire import Device, get_pipewire_default_devices
 
 from .parse_pipewire_data import (
     physical_devices_unchanged,
@@ -162,6 +160,8 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
         self.add_output_devices()
         self.add_physical_devices()
 
+        self.schedule_default_devices_check()
+
     def add_physical_devices(self):
         update_physical_devices_lists()
 
@@ -199,3 +199,16 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
         for d in disabled_output_devices:
             row = InputRow(d, can_edit_device=False)
             self.output_disabled.add(row)
+
+    def check_default_devices(self):
+        try:
+            devices = get_pipewire_default_devices()
+
+        except Exception as e:
+            print("check_default_devices error:", str(e))
+        
+        return True
+
+    def schedule_default_devices_check(self):
+        # Schedule the 'run_system_command' function to run every second (1000 milliseconds).
+        GLib.timeout_add_seconds(1, self.check_default_devices)

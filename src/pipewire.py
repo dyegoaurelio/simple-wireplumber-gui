@@ -1,5 +1,6 @@
 import os
 import re
+import subprocess
 from dataclasses import dataclass
 from typing import List, Dict, Optional
 
@@ -73,3 +74,18 @@ def get_pipewire_output_nodes():
 
 def get_pipewire_input_nodes():
     return filter_pipewire_objects("Audio/Source")
+
+
+def get_pipewire_default_devices():
+    # Replace 'your_command_here' with the actual system command you want to run.
+    result = subprocess.run(
+        ["pw-metadata"],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        shell=True,
+    )
+    if result.returncode == 0:
+        return result.stdout
+    else:
+        return result.stderr
