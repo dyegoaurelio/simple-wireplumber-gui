@@ -3,6 +3,7 @@ import re
 import subprocess
 from dataclasses import dataclass
 from typing import List, Dict, Optional
+import json
 
 PATTERN_IDS = r"id (\d+), type ([\w:\/]+)"
 PATTERN_DATA = r'(\w+\.\w+)\s*=\s*"([^"]+)"'
@@ -85,7 +86,17 @@ def get_pipewire_default_devices():
         text=True,
         shell=True,
     )
+
+    pattern = (
+        r"key:\'(default\.configured\.audio\.(?:sink|source))\' value:\'({[^}]+})\'"
+    )
+
+    result_dict: Dict[str, str] = {}
+
     if result.returncode == 0:
-        return result.stdout
-    else:
-        return result.stderr
+        matches = re.findall(pattern, result.stdout)
+
+        for key, value in matches:
+            result_dict[key] = json.loads(value)
+
+    return result_dict
