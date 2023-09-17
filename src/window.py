@@ -143,10 +143,10 @@ class InputRow(Adw.ActionRow):
 class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
     __gtype_name__ = "SimpleWireplumberGuiWindow"
 
-    input_active = Gtk.Template.Child()
+    input_active: Adw.PreferencesGroup = Gtk.Template.Child()
     input_disabled = Gtk.Template.Child()
 
-    output_active = Gtk.Template.Child()
+    output_active: Adw.PreferencesGroup = Gtk.Template.Child()
     output_disabled = Gtk.Template.Child()
 
     physical_unchanged: Adw.PreferencesGroup = Gtk.Template.Child()
@@ -203,10 +203,17 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
     def check_default_devices(self):
         try:
             devices = get_pipewire_default_devices()
+            output_devices_wrapper = (
+                self.output_active.get_last_child().get_last_child().get_last_child()
+            )
+            _child: InputRow | None = output_devices_wrapper.get_first_child()
+
+            while _child:
+                _child = _child.get_next_sibling()
 
         except Exception as e:
             print("check_default_devices error:", str(e))
-        
+
         return True
 
     def schedule_default_devices_check(self):
