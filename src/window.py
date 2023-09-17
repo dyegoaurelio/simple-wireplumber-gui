@@ -266,6 +266,33 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
 
                 _child = _child.get_next_sibling()
 
+            for group in [
+                self.physical_successfully_changed,
+                self.physical_unchanged,
+                self.physical_waiting_reboot,
+            ]:
+                physical_devices_wrapper = (
+                    group.get_last_child().get_last_child().get_last_child()
+                )
+
+                _child: InputRow | None = physical_devices_wrapper.get_first_child()
+
+                while _child:
+                    is_default_input = (
+                        _child.device.name.split(".")[1]
+                        == current_default_input.split(".")[1]
+                    )
+
+                    is_default_output = (
+                        _child.device.name.split(".")[1]
+                        == current_default_output.split(".")[1]
+                    )
+
+                    _child.set_is_default_input_device(is_default_input)
+                    _child.set_is_default_output_device(is_default_output)
+
+                    _child = _child.get_next_sibling()
+
         except Exception as e:
             print("check_default_devices error:", str(e))
 
