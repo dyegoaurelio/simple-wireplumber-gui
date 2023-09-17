@@ -124,16 +124,16 @@ class InputRow(Adw.ActionRow):
         self.add_suffix(info_btn)
 
         self.output_default_device_indicator = Gtk.Button(
-            icon_name="help-about-symbolic",
-            tooltip_text="Show more info about this device",
+            icon_name="audio-speakers-symbolic",
+            tooltip_text="This is the current system's default output node",
         )
 
         self.add_prefix(self.output_default_device_indicator)
         self.output_default_device_indicator.hide()
 
         self.input_default_device_indicator = Gtk.Button(
-            icon_name="help-about-symbolic",
-            tooltip_text="Show more info about this device",
+            icon_name="audio-input-microphone-symbolic",
+            tooltip_text="This is the current system's default input node",
         )
 
         self.add_prefix(self.input_default_device_indicator)
