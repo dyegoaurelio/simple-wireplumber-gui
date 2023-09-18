@@ -18,9 +18,29 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import sys
+import argparse
 
-def main(version):
+
+def run_app():
     """The application's entry point."""
     from .app import SimpleWireplumberGuiApplication
+
     app = SimpleWireplumberGuiApplication()
     return app.run(sys.argv)
+
+
+def clear_settings():
+    print("clearing settings")
+
+
+def main(version):
+    parser = argparse.ArgumentParser(description="Simple Wireplumber GUI")
+
+    parser.add_argument("--clear-settings", action="store_true", help="Clear settings")
+
+    args = parser.parse_args(sys.argv[1:])
+
+    if args.clear_settings:
+        clear_settings()
+    else:
+        run_app()
