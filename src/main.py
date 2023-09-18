@@ -41,6 +41,6 @@ def main(version):
     args = parser.parse_args(sys.argv[1:])
 
     if args.clear_settings:
-        clear_settings()
+        return clear_settings()
     else:
-        run_app()
+        return run_app()
