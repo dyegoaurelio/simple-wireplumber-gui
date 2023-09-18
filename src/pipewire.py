@@ -88,7 +88,7 @@ def get_pipewire_default_devices():
     )
 
     pattern = (
-        r"key:\'(default\.configured\.audio\.(?:sink|source))\' value:\'({[^}]+})\'"
+        r"key:\'(default\.audio\.(?:sink|source))\' value:\'({[^}]+})\'"
     )
 
     result_dict: Dict[str, Dict[str,str]] = {}

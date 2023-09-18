@@ -240,7 +240,7 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
             _child: InputRow | None = output_devices_wrapper.get_first_child()
 
             current_default_output = devices.get(
-                "default.configured.audio.sink", {}
+                "default.audio.sink", {}
             ).get("name")
 
             while _child:
@@ -250,7 +250,7 @@ class SimpleWireplumberGuiWindow(Adw.PreferencesWindow):
                 _child = _child.get_next_sibling()
 
             current_default_input = devices.get(
-                "default.configured.audio.source", {}
+                "default.audio.source", {}
             ).get("name")
 
             input_devices_wrapper = (
