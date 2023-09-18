@@ -29,6 +29,7 @@ configure_file(
 simple_wireplumber_gui_sources = [
   '__init__.py',
   'main.py',
+  'app.py',
   'window.py',
   'pipewire.py',
   'parse_pipewire_data.py',
