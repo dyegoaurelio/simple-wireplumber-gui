@@ -101,6 +101,13 @@ class InputRow(Adw.ActionRow):
     output_default_device_indicator: Gtk.Button
     input_default_device_indicator: Gtk.Button
 
+    def row_btn(self, **kwargs):
+        return Gtk.Button(
+            css_classes=["circular", "flat"],
+            valign=Gtk.Align.CENTER,
+            **kwargs
+        )
+
     def __init__(self, device: Device, can_edit_device=True, **kwargs):
         self.device = device
         super().__init__(
@@ -109,13 +116,13 @@ class InputRow(Adw.ActionRow):
 
         self.can_edit_device = can_edit_device
         if self.can_edit_device:
-            edit_btn = Gtk.Button(
+            edit_btn = self.row_btn(
                 icon_name="document-edit", tooltip_text="Rename this device"
             )
             edit_btn.connect("clicked", lambda _: self.show_edit_modal())
             self.add_suffix(edit_btn)
 
-        info_btn = Gtk.Button(
+        info_btn = self.row_btn(
             icon_name="help-about-symbolic",
             tooltip_text="Show more info about this device",
         )
@@ -123,7 +130,7 @@ class InputRow(Adw.ActionRow):
 
         self.add_suffix(info_btn)
 
-        self.output_default_device_indicator = Gtk.Button(
+        self.output_default_device_indicator = self.row_btn(
             icon_name="audio-speakers-symbolic",
             tooltip_text="This is the current system's default output node",
         )
@@ -131,7 +138,7 @@ class InputRow(Adw.ActionRow):
         self.add_prefix(self.output_default_device_indicator)
         self.output_default_device_indicator.hide()
 
-        self.input_default_device_indicator = Gtk.Button(
+        self.input_default_device_indicator = self.row_btn(
             icon_name="audio-input-microphone-symbolic",
             tooltip_text="This is the current system's default input node",
         )
