@@ -19,6 +19,12 @@ WIREPLUMBER_BLUETOOTH_DEVICE_DESCRIPTION_CONFIG_PATH = (
     f"{WIREPLUMBER_CONFIG_FOLDER}/bluetooth.lua.d/{WIREPLUMBER_RENAME_DEVICE_FILENAME}"
 )
 
+CONFIGURATION_PATHS = (
+    CONFIG_PATH,
+    WIREPLUMBER_DEVICE_DESCRIPTION_CONFIG_PATH,
+    WIREPLUMBER_BLUETOOTH_DEVICE_DESCRIPTION_CONFIG_PATH,
+)
+
 
 change_device_template = """
 rule = {{
@@ -137,3 +143,19 @@ def add_device_device_new_description(device, new_description: str | None):
     current_config["devices_new_description"] = current_new_descriptions
 
     _save_config(current_config)
+
+
+def safe_delete_files(file_paths):
+    for path in file_paths:
+        print(f"\nDeleting '{path}'")
+        try:
+            if os.path.isfile(path):
+                os.remove(path)
+            else:
+                print(f"Skipping {path}: Not a file")
+        except Exception as e:
+            print(f"Error deleting {path}: {str(e)}")
+
+
+def delete_all_config_files():
+    return safe_delete_files(CONFIGURATION_PATHS)

@@ -30,7 +30,10 @@ def run_app():
 
 
 def clear_settings():
+    from .data_storage import delete_all_config_files
+
     print("clearing settings")
+    delete_all_config_files()
 
 
 def main(version):
