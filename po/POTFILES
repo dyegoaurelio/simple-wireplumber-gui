@@ -1,6 +1,10 @@
 data/io.github.dyegoaurelio.simple-wireplumber-gui.desktop.in
 data/io.github.dyegoaurelio.simple-wireplumber-gui.appdata.xml.in
 data/io.github.dyegoaurelio.simple-wireplumber-gui.gschema.xml
+src/app.py
 src/main.py
 src/window.py
 src/window.ui
+src/gtk/edit-device-modal.ui
+src/gtk/help-overlay.ui
+src/gtk/info-device-modal.ui
