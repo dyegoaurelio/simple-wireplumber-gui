@@ -19,9 +19,9 @@ class SimpleWireplumberGuiApplication(Adw.Application):
             flags=Gio.ApplicationFlags.DEFAULT_FLAGS,
         )
         self.create_action("quit", lambda *_: self.quit(), ["<primary>q"])
-        self.create_action("about", self.on_about_action)
-        self.create_action("preferences", self.on_preferences_action)
-        self.create_action("refresh_app", self.on_refresh_app)
+        self.create_action("about", self.on_about_action, ["F1"])
+        self.create_action("preferences", self.on_preferences_action, ["<primary>comma"])
+        self.create_action("refresh_app", self.on_refresh_app, ["F5"])
 
     def do_activate(self):
         """Called when the application is activated.
