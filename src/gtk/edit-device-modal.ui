@@ -3,7 +3,7 @@
   <requires lib="gtk" version="4.0" />
   <requires lib="Adw" version="1.0" />
   <template class="EditDeviceModal" parent="AdwWindow">
-    <property name="title">Edit device</property>
+    <property name="title" translatable="yes">Edit device</property>
     <property name="resizable">True</property>
     <property name="destroy-with-parent">False</property>
     <property name="modal">True</property>
@@ -16,7 +16,7 @@
           <object class="AdwHeaderBar">
             <child type="start">
               <object class="GtkButton" id="clear_btn">
-                <property name="tooltip-text">Clear changes</property>
+                <property name="tooltip-text" translatable="yes">Clear changes</property>
                 <property name="icon-name">user-trash-symbolic</property>
                 <style>
                   <class name="destructive-action" />
@@ -53,7 +53,7 @@
                       <object class="AdwPreferencesGroup">
                         <child>
                           <object class="AdwEntryRow" id="new_description">
-                            <property name="title">New description</property>
+                            <property name="title" translatable="yes">New description</property>
                           </object>
                         </child>
                       </object>
@@ -61,7 +61,7 @@
 
                     <child>
                       <object class="GtkButton" id="send_btn">
-                        <property name="label">Apply Change</property>
+                        <property name="label" translatable="yes">Apply Change</property>
                         <style>
                           <class name="suggested-action" />
                         </style>

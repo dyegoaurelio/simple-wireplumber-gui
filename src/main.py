@@ -37,9 +37,9 @@ def clear_settings():
 
 
 def main(version):
-    parser = argparse.ArgumentParser(description="Simple Wireplumber GUI")
+    parser = argparse.ArgumentParser(description=_("Simple Wireplumber GUI"))
 
-    parser.add_argument("--clear-settings", action="store_true", help="Clear settings")
+    parser.add_argument("--clear-settings", action="store_true", help=_("Clear settings"))
 
     args = parser.parse_args(sys.argv[1:])
 
