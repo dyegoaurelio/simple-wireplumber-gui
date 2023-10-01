@@ -59,6 +59,7 @@ class SimpleWireplumberGuiApplication(Adw.Application):
             developers=["dyegoaurelio https://github.com/dyegoaurelio"],
             issue_url="https://github.com/dyegoaurelio/simple-wireplumber-gui/issues",
             copyright="© 2023 dyego",
+            application=self,
         )
         # Translator credits. Replace "translator-credits" with your name/username, and optionally an email or URL.
         # One name per line, please do not remove previous names.
