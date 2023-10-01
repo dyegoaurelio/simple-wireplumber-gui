@@ -52,11 +52,12 @@ class SimpleWireplumberGuiApplication(Adw.Application):
         """Callback for the app.about action."""
         about = Adw.AboutWindow(
             transient_for=self.props.active_window,
-            application_name="simple-wireplumber-gui",
+            application_name="Simple Wireplumber GUI",
             application_icon="io.github.dyegoaurelio.simple-wireplumber-gui",
-            developer_name="dyego",
-            version="0.1.0",
-            developers=["dyego"],
+            developer_name="Dyego Aurélio",
+            version="0.1.4",
+            developers=["dyegoaurelio https://github.com/dyegoaurelio"],
+            issue_url="https://github.com/dyegoaurelio/simple-wireplumber-gui/issues",
             copyright="© 2023 dyego",
         )
         # Translator credits. Replace "translator-credits" with your name/username, and optionally an email or URL.
