@@ -3,7 +3,7 @@
   <requires lib="gtk" version="4.0" />
   <requires lib="Adw" version="1.0" />
   <template class="InfoDeviceModal" parent="AdwWindow">
-    <property name="title">Device Info</property>
+    <property name="title" translatable="yes">Device Info</property>
     <property name="resizable">True</property>
     <property name="destroy-with-parent">False</property>
     <property name="modal">True</property>

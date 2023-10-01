@@ -117,14 +117,14 @@ class InputRow(Adw.ActionRow):
         self.can_edit_device = can_edit_device
         if self.can_edit_device:
             edit_btn = self.row_btn(
-                icon_name="document-edit", tooltip_text="Rename this device"
+                icon_name="document-edit", tooltip_text=_("Rename this device")
             )
             edit_btn.connect("clicked", lambda _: self.show_edit_modal())
             self.add_suffix(edit_btn)
 
         info_btn = self.row_btn(
             icon_name="help-about-symbolic",
-            tooltip_text="Show more info about this device",
+            tooltip_text=_("Show more info about this device"),
         )
         info_btn.connect("clicked", lambda _: self.show_info_modal())
 
@@ -132,7 +132,7 @@ class InputRow(Adw.ActionRow):
 
         self.output_default_device_indicator = self.row_btn(
             icon_name="audio-speakers-symbolic",
-            tooltip_text="This is the current system's default output node",
+            tooltip_text=_("This is the current system's default output node"),
         )
 
         self.add_prefix(self.output_default_device_indicator)
@@ -140,7 +140,7 @@ class InputRow(Adw.ActionRow):
 
         self.input_default_device_indicator = self.row_btn(
             icon_name="audio-input-microphone-symbolic",
-            tooltip_text="This is the current system's default input node",
+            tooltip_text=_("This is the current system's default input node"),
         )
 
         self.add_prefix(self.input_default_device_indicator)

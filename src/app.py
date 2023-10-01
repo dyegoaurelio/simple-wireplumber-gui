@@ -19,9 +19,9 @@ class SimpleWireplumberGuiApplication(Adw.Application):
             flags=Gio.ApplicationFlags.DEFAULT_FLAGS,
         )
         self.create_action("quit", lambda *_: self.quit(), ["<primary>q"])
-        self.create_action("about", self.on_about_action)
-        self.create_action("preferences", self.on_preferences_action)
-        self.create_action("refresh_app", self.on_refresh_app)
+        self.create_action("about", self.on_about_action, ["F1"])
+        self.create_action("preferences", self.on_preferences_action, ["<primary>comma"])
+        self.create_action("refresh_app", self.on_refresh_app, ["F5"])
 
     def do_activate(self):
         """Called when the application is activated.
@@ -45,7 +45,7 @@ class SimpleWireplumberGuiApplication(Adw.Application):
         self.main_window = SimpleWireplumberGuiWindow(application=self)
         self.main_window.present()
 
-    def on_about_action(self, widget, _):
+    def on_about_action(self, *args):
         """Callback for the app.about action."""
         about = Adw.AboutWindow(
             transient_for=self.props.active_window,
@@ -56,6 +56,9 @@ class SimpleWireplumberGuiApplication(Adw.Application):
             developers=["dyego"],
             copyright="© 2023 dyego",
         )
+        # Translator credits. Replace "translator-credits" with your name/username, and optionally an email or URL. 
+        # One name per line, please do not remove previous names.
+        about.set_translator_credits(_("translator-credits"))
         about.present()
 
     def on_preferences_action(self, widget, _):
