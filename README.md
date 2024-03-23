@@ -12,9 +12,9 @@ You can [install via Flathub](https://flathub.org/apps/io.github.dyegoaurelio.si
 
 ## Clearing changes
 
-When you uninstall this app, it's changes will remain on your system.
+When you uninstall this app, its changes will remain on your system.
 
-If you wish to erase all it's changes, you can just run on your terminal:
+If you wish to erase all its changes, you can just run on your terminal:
 
 ```BASH
 flatpak run io.github.dyegoaurelio.simple-wireplumber-gui --clear-settings
