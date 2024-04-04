@@ -12,7 +12,7 @@
 	</screenshots>
 	<releases>
 		<release version="0.1.4" date="2023-10-01">
-			<description translatable="no">
+			<description translate="no">
 				<p>Adding Turkish translation</p>
 			</description>
 		</release>
@@ -20,7 +20,7 @@
 		<release version="0.1.2-fix" date="2023-09-16"/>
 		<release version="0.1.1" date="2023-09-09"/>
 		<release version="0.1" date="2023-09-08">
-			<description translatable="no">
+			<description translate="no">
 				<p>Initial pre-release</p>
 			</description>
 		</release>
