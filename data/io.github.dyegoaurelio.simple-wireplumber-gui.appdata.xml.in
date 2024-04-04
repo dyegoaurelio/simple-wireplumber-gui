@@ -3,6 +3,9 @@
 	<name>Simple Wireplumber GUI</name>
 	<id>io.github.dyegoaurelio.simple-wireplumber-gui.desktop</id>
 	<developer_name>Dyego Aurélio</developer_name>
+	<developer id="io.github.dyegoaurelio">
+		<name>Dyego Aurélio</name>
+	</developer>
 	<screenshots>
 		<screenshot type="default">
 			<image>
