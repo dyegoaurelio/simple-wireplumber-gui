@@ -33,6 +33,8 @@
 
 	<url type="homepage">https://github.com/dyegoaurelio/simple-wireplumber-gui</url>
 	<url type="bugtracker">https://github.com/dyegoaurelio/simple-wireplumber-gui/issues</url>
+	<url type="vcs-browser">https://github.com/dyegoaurelio/simple-wireplumber-gui</url>
+	<url type="translate">https://github.com/dyegoaurelio/simple-wireplumber-gui/tree/main/po</url>
 
 	<summary>
 		A simple GTK4 GUI for PipeWire
