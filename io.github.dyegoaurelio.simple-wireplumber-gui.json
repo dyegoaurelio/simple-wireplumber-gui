@@ -1,7 +1,7 @@
 {
     "app-id" : "io.github.dyegoaurelio.simple-wireplumber-gui",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "45",
+    "runtime-version" : "46",
     "sdk" : "org.gnome.Sdk",
     "command" : "simple-wireplumber-gui",
     "finish-args" : [
