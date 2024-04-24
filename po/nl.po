@@ -1,0 +1,167 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-01 01:31+0300\n"
+"PO-Revision-Date: 2024-04-24 17:08+0200\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: data/io.github.dyegoaurelio.simple-wireplumber-gui.desktop.in:3
+#: data/io.github.dyegoaurelio.simple-wireplumber-gui.appdata.xml.in:3
+#: data/io.github.dyegoaurelio.simple-wireplumber-gui.appdata.xml.in:33
+#: src/main.py:40
+msgid "Simple Wireplumber GUI"
+msgstr "Een eenvoudige Wireplumber-toepassing"
+
+#: data/io.github.dyegoaurelio.simple-wireplumber-gui.desktop.in:4
+msgid "A simple GUI for PipeWire"
+msgstr "Een eenvoudige toepassing voor PipeWire"
+
+#: data/io.github.dyegoaurelio.simple-wireplumber-gui.desktop.in:11
+msgid "PipeWire;Audio;Session Manager;Sound Configuration;Devices;"
+msgstr "PipeWire;Audio;Sessiebeheer;Geluidsvoorkeuren;Apparaten;"
+
+#: data/io.github.dyegoaurelio.simple-wireplumber-gui.appdata.xml.in:5
+msgid "Dyego Aurélio"
+msgstr "Dyego Aurélio"
+
+#: data/io.github.dyegoaurelio.simple-wireplumber-gui.appdata.xml.in:10
+msgid "Main window"
+msgstr "Hoofdvenster"
+
+#: data/io.github.dyegoaurelio.simple-wireplumber-gui.appdata.xml.in:29
+msgid "A simple GTK4 GUI for PipeWire"
+msgstr "Een eenvoudige GTK4-toepassing voor PipeWire"
+
+#. Translator credits. Replace "translator-credits" with your name/username, and optionally an email or URL.
+#. One name per line, please do not remove previous names.
+#: src/app.py:61
+msgid "translator-credits"
+msgstr "Heimen Stoffels <vistausss@fastmail.com>"
+
+#: src/main.py:42
+msgid "Clear settings"
+msgstr "Standaardwaarden"
+
+#: src/window.py:120
+msgid "Rename this device"
+msgstr "Naam wijzigen"
+
+#: src/window.py:127
+msgid "Show more info about this device"
+msgstr "Meer informatie over dit apparaat"
+
+#: src/window.py:135
+msgid "This is the current system's default output node"
+msgstr "Dit is de huidige uitvoerbron van het systeem"
+
+#: src/window.py:143
+msgid "This is the current system's default input node"
+msgstr "Dit is de huidige invoerbron van het systeem"
+
+#: src/window.ui:7
+msgid "Sample Preferences"
+msgstr "Voorbeeldvoorkeuren"
+
+#: src/window.ui:14
+msgid "Physical Devices "
+msgstr "Fysieke apparaten "
+
+#: src/window.ui:19
+msgid "Waiting reboot"
+msgstr "Herstart vereist"
+
+#: src/window.ui:20
+msgid "You need to reboot your system to apply these changes"
+msgstr "Herstart uw systeem om de wijzigingen toe te passen"
+
+#: src/window.ui:26
+msgid "Unchanged devices"
+msgstr "Ongewijzigde apparaten"
+
+#: src/window.ui:27
+msgid "Audio devices avaliable to be edited"
+msgstr "Aanpasbare geluidsapparaten"
+
+#: src/window.ui:33
+msgid "Sucessfully renamed"
+msgstr "De naam is gewijzigd"
+
+#: src/window.ui:42
+msgid "Output Nodes"
+msgstr "Uitvoerbronnen"
+
+#: src/window.ui:50
+msgid "Editing output nodes will be available on future relases"
+msgstr "Het aanpassen van uitvoerbronnen wordt in een toekomstige versie toegevoegd"
+
+#: src/window.ui:83
+msgid "Input Nodes"
+msgstr "Invoerbronnen"
+
+#: src/window.ui:91
+msgid "Editing input nodes will be available on future relases"
+msgstr "Het aanpassen van invoerbronnen wordt in een toekomstige versie toegevoegd"
+
+#: src/window.ui:125
+msgid "_Preferences"
+msgstr "_Voorkeuren"
+
+#: src/window.ui:129
+msgid "_Keyboard Shortcuts"
+msgstr "_Sneltoetsen"
+
+#: src/window.ui:133
+msgid "_About Simple-wireplumber-gui"
+msgstr "_Over Simple-wireplumber-gui"
+
+#: src/gtk/edit-device-modal.ui:6
+msgid "Edit device"
+msgstr "Apparaat bewerken"
+
+#: src/gtk/edit-device-modal.ui:19
+msgid "Clear changes"
+msgstr "Wijzigingen terugdraaien"
+
+#: src/gtk/edit-device-modal.ui:56
+msgid "New description"
+msgstr "Nieuwe beschrijving"
+
+#: src/gtk/edit-device-modal.ui:64
+msgid "Apply Change"
+msgstr "Wijzigingen toepassen"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Algemeen"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Sneltoetsen tonen"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Afsluiten"
+
+#: src/gtk/info-device-modal.ui:6
+msgid "Device Info"
+msgstr "Apparaatinformatie"
+
+#: src/gtk/info-device-modal.ui:34
+msgid "Property Rows"
+msgstr "Rijen"
