@@ -3,6 +3,9 @@
 	<name>Simple Wireplumber GUI</name>
 	<id>io.github.dyegoaurelio.simple-wireplumber-gui.desktop</id>
 	<developer_name>Dyego Aurélio</developer_name>
+	<developer id="io.github.dyegoaurelio">
+		<name>Dyego Aurélio</name>
+	</developer>
 	<screenshots>
 		<screenshot type="default">
 			<image>
@@ -12,7 +15,7 @@
 	</screenshots>
 	<releases>
 		<release version="0.1.4" date="2023-10-01">
-			<description translatable="no">
+			<description translate="no">
 				<p>Adding Turkish translation</p>
 			</description>
 		</release>
@@ -20,7 +23,7 @@
 		<release version="0.1.2-fix" date="2023-09-16"/>
 		<release version="0.1.1" date="2023-09-09"/>
 		<release version="0.1" date="2023-09-08">
-			<description translatable="no">
+			<description translate="no">
 				<p>Initial pre-release</p>
 			</description>
 		</release>
@@ -30,6 +33,8 @@
 
 	<url type="homepage">https://github.com/dyegoaurelio/simple-wireplumber-gui</url>
 	<url type="bugtracker">https://github.com/dyegoaurelio/simple-wireplumber-gui/issues</url>
+	<url type="vcs-browser">https://github.com/dyegoaurelio/simple-wireplumber-gui</url>
+	<url type="translate">https://github.com/dyegoaurelio/simple-wireplumber-gui/tree/main/po</url>
 
 	<summary>
 		A simple GTK4 GUI for PipeWire
