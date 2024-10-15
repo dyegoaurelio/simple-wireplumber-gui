@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
 	<name>Simple Wireplumber GUI</name>
-	<id>io.github.dyegoaurelio.simple-wireplumber-gui.desktop</id>
+	<id>io.github.dyegoaurelio.simple-wireplumber-gui</id>
 	<developer_name>Dyego Aurélio</developer_name>
 	<developer id="io.github.dyegoaurelio">
 		<name>Dyego Aurélio</name>
@@ -46,5 +46,11 @@
 	<content_rating type="oars-1.1" />
 
 	<launchable type="desktop-id">io.github.dyegoaurelio.simple-wireplumber-gui.desktop</launchable>
+	<provides>
+		<id>io.github.dyegoaurelio.simple-wireplumber-gui.desktop</id>
+	</provides>
+	<replaces>
+		<id>io.github.dyegoaurelio.simple-wireplumber-gui.desktop</id>
+	</replaces>
 
 </component>
