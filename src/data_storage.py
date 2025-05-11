@@ -10,39 +10,29 @@ CLEAR_DEVICE_DESC_STR = "__CLEAR_DEVICE_DESC_STR__"
 CONFIG_PATH = f"{xdg_config}/simple-wireplumber-gui/config.json"
 WIREPLUMBER_CONFIG_FOLDER = f"{home_folder}/.config/wireplumber"
 
-WIREPLUMBER_RENAME_DEVICE_FILENAME = "52-SWG-rename-devices.lua"
-WIREPLUMBER_DEVICE_DESCRIPTION_CONFIG_PATH = (
-    f"{WIREPLUMBER_CONFIG_FOLDER}/main.lua.d/{WIREPLUMBER_RENAME_DEVICE_FILENAME}"
-)
-
-WIREPLUMBER_BLUETOOTH_DEVICE_DESCRIPTION_CONFIG_PATH = (
-    f"{WIREPLUMBER_CONFIG_FOLDER}/bluetooth.lua.d/{WIREPLUMBER_RENAME_DEVICE_FILENAME}"
+WIREPLUMBER_RENAME_DEVICE_CONF_PATH = (
+    f"{WIREPLUMBER_CONFIG_FOLDER}/wireplumber.conf.d/52-SWG-rename-devices.conf"
 )
 
 CONFIGURATION_PATHS = (
     CONFIG_PATH,
-    WIREPLUMBER_DEVICE_DESCRIPTION_CONFIG_PATH,
-    WIREPLUMBER_BLUETOOTH_DEVICE_DESCRIPTION_CONFIG_PATH,
+    WIREPLUMBER_RENAME_DEVICE_CONF_PATH,
 )
 
 
-change_device_template = """
-rule = {{
-  matches = {{
-    {{
-      {{ "device.name", "equals", "{device_name}" }},
-    }},
-  }},
-  apply_properties = {{
-{properties}
-  }},
-}}
+rule_template = """  {{
+    matches = [
+      {{
+        device.name = "{device_name}"
+      }}
+    ]
+    actions = {{
+      update-props = {{
+{properties}      }}
+    }}
+  }},"""
 
-table.insert({device_monitor}_monitor.rules,rule)
-
-"""
-
-property_template = '      ["{key}"] = "{value}",\n'
+property_template = '        {key} = "{value}"\n'
 
 
 def sanitize(i: str):
@@ -53,50 +43,42 @@ def _apply_new_device_description(data: dict | None):
     if data is None:
         return
 
-    os.makedirs(
-        os.path.dirname(WIREPLUMBER_DEVICE_DESCRIPTION_CONFIG_PATH), exist_ok=True
-    )
-    os.makedirs(
-        os.path.dirname(WIREPLUMBER_BLUETOOTH_DEVICE_DESCRIPTION_CONFIG_PATH),
-        exist_ok=True,
-    )
+    os.makedirs(os.path.dirname(WIREPLUMBER_RENAME_DEVICE_CONF_PATH), exist_ok=True)
 
-    script_text = ""
-    script_text_bluetooth = ""
+    alsa_rules = []
+    bluez_rules = []
 
     for name, item_data in data.items():
         properties_data = item_data.get("properties_data")
         monitor = item_data.get("monitor")
 
-        properties = ""
-        if not properties_data.get(CLEAR_DEVICE_DESC_STR, None) is None:
+        if properties_data.get(CLEAR_DEVICE_DESC_STR, None) is not None:
             continue
 
+        properties = ""
         for key, value in properties_data.items():
             properties += property_template.format(key=key, value=value)
 
-        parsed_text = change_device_template.format(
-            device_name=name, properties=properties, device_monitor=monitor
-        )
+        rule = rule_template.format(device_name=name, properties=properties)
+
         if monitor == "bluez":
-            script_text_bluetooth += parsed_text
+            bluez_rules.append(rule)
         else:
-            script_text += parsed_text
+            alsa_rules.append(rule)
 
-    with open(WIREPLUMBER_DEVICE_DESCRIPTION_CONFIG_PATH, "w") as f:
-        f.write(script_text)
+    conf_lines = []
 
-    with open(WIREPLUMBER_BLUETOOTH_DEVICE_DESCRIPTION_CONFIG_PATH, "w") as f:
-        f.write(script_text_bluetooth)
+    if alsa_rules:
+        conf_lines.append("monitor.alsa.rules = [\n" + "\n".join(alsa_rules) + "\n]\n")
+
+    if bluez_rules:
+        conf_lines.append("monitor.bluez.rules = [\n" + "\n".join(bluez_rules) + "\n]")
+
+    with open(WIREPLUMBER_RENAME_DEVICE_CONF_PATH, "w") as f:
+        f.write("\n".join(conf_lines))
 
 
 def _save_config(data):
-    """
-    Save a dictionary as a JSON configuration file.
-
-    Args:
-        data (dict): The dictionary to be saved as a configuration.
-    """
     os.makedirs(os.path.dirname(CONFIG_PATH), exist_ok=True)
     _apply_new_device_description(data.get("devices_new_description", None))
     with open(CONFIG_PATH, "w") as config_file:
@@ -104,12 +86,6 @@ def _save_config(data):
 
 
 def load_config():
-    """
-    Load the configuration data from the JSON file.
-
-    Returns:
-        dict: The loaded configuration data as a dictionary.
-    """
     try:
         with open(CONFIG_PATH, "r") as config_file:
             config_data = json.load(config_file)
@@ -124,7 +100,7 @@ def add_device_device_new_description(device, new_description: str | None):
     current_new_descriptions = current_config.get("devices_new_description", {})
 
     _new_description = (
-        new_description if not new_description is None else CLEAR_DEVICE_DESC_STR
+        new_description if new_description is not None else CLEAR_DEVICE_DESC_STR
     )
 
     new_properties = {
