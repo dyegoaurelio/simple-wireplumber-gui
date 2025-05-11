@@ -25,8 +25,6 @@ class SimpleWireplumberGuiApplication(Adw.Application):
         )
         self.create_action("refresh_app", self.on_refresh_app, ["F5", "<primary>r"])
 
-        self.set_accels_for_action("window.close", ["Escape", "<primary>w"])
-
     def do_activate(self):
         """Called when the application is activated.
 

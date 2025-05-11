@@ -42,35 +42,16 @@
         <property name="title" translatable="yes">Output Nodes</property>
         <property name="icon-name">audio-headphones</property>
 
-        <child type="start">
-          <object class="GtkBox">
-            <property name="orientation">vertical</property>
-            <child>
-              <object class="AdwBanner">
-                <property name="title" translatable="yes">Editing output nodes will be available on future relases</property>
-                <property name="revealed">true</property>
-              </object>
-            </child>
+        <child>
+          <object class="AdwPreferencesGroup" id="output_active">
+            <!-- <property name="title">Active</property> -->
+            <!-- <property name="description">Active audio input nodes</property> -->
+          </object>
+        </child>
 
-
-            <child>
-              <object class="AdwPreferencesPage">
-                <child>
-                  <object class="AdwPreferencesGroup" id="output_active">
-                    <!-- <property name="title">Active</property> -->
-                    <!-- <property name="description">Active audio input nodes</property> -->
-                  </object>
-                </child>
-
-                <child>
-                  <object class="AdwPreferencesGroup" id="output_disabled">
-                    <!-- <property name="title">Disabled</property> -->
-                  </object>
-                </child>
-              </object>
-            </child>
-
-
+        <child>
+          <object class="AdwPreferencesGroup" id="output_disabled">
+            <!-- <property name="title">Disabled</property> -->
           </object>
         </child>
 
@@ -83,34 +64,16 @@
         <property name="title" translatable="yes">Input Nodes</property>
         <property name="icon-name">microphone</property>
 
-        <child type="start">
-          <object class="GtkBox">
-            <property name="orientation">vertical</property>
-            <child>
-              <object class="AdwBanner">
-                <property name="title" translatable="yes">Editing input nodes will be available on future relases</property>
-                <property name="revealed">true</property>
-              </object>
-            </child>
+        <child>
+          <object class="AdwPreferencesGroup" id="input_active">
+            <!-- <property name="title">Active</property> -->
+            <!-- <property name="description">Active audio input nodes</property> -->
+          </object>
+        </child>
 
-            <child>
-              <object class="AdwPreferencesPage">
-                <child>
-                  <object class="AdwPreferencesGroup" id="input_active">
-                    <!-- <property name="title">Active</property> -->
-                    <!-- <property name="description">Active audio input nodes</property> -->
-                  </object>
-                </child>
-
-                <child>
-                  <object class="AdwPreferencesGroup" id="input_disabled">
-                    <!-- <property name="title">Disabled</property> -->
-                  </object>
-                </child>
-              </object>
-            </child>
-
-
+        <child>
+          <object class="AdwPreferencesGroup" id="input_disabled">
+            <!-- <property name="title">Disabled</property> -->
           </object>
         </child>
 
