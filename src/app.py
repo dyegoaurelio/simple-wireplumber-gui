@@ -53,7 +53,7 @@ class SimpleWireplumberGuiApplication(Adw.Application):
             application_name="Simple Wireplumber GUI",
             application_icon="io.github.dyegoaurelio.simple-wireplumber-gui",
             developer_name="Dyego Aurélio",
-            version="0.2.1",
+            version="0.2.2",
             developers=["dyegoaurelio https://github.com/dyegoaurelio"],
             issue_url="https://github.com/dyegoaurelio/simple-wireplumber-gui/issues",
             copyright="© 2023 dyego",
