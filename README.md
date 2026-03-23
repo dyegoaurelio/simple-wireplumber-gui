@@ -15,7 +15,7 @@ With flatpak installed, run this command.
 flatpak install flathub io.github.dyegoaurelio.simple-wireplumber-gui
 ```
 ### Arch User Repository
-This method only works on Arch Linux.
+This method only works on Arch-based Linux distributions.
 See package information [here](https://aur.archlinux.org/packages/simple-wireplumber-gui).
 
 #### With yay
@@ -41,7 +41,7 @@ makepkg -si
 
 When you uninstall this app, its changes will remain on your system.
 
-If you wish to erase all its changes, you can just run on your terminal:
+If you wish to erase all its changes, you can just this run on your terminal if you installed with flathub:
 
 ```BASH
 flatpak run io.github.dyegoaurelio.simple-wireplumber-gui --clear-settings
