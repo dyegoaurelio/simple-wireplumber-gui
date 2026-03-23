@@ -41,7 +41,7 @@ makepkg -si
 
 When you uninstall this app, its changes will remain on your system.
 
-If you wish to erase all its changes, you can just this run on your terminal if you installed with flathub:
+If you wish to erase all its changes, you can just run this on your terminal if you installed with flathub:
 
 ```BASH
 flatpak run io.github.dyegoaurelio.simple-wireplumber-gui --clear-settings
