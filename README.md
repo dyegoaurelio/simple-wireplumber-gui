@@ -7,14 +7,41 @@ With this tool you can easily rename and see the properties of your audio device
 ![main window screenshot](/data/screenshots/main-window.png "main window screenshot")
 
 ## Installation
+### Flathub
+This is the preferred method of installation. See package information [here](https://flathub.org/apps/io.github.dyegoaurelio.simple-wireplumber-gui).
 
-You can [install via Flathub](https://flathub.org/apps/io.github.dyegoaurelio.simple-wireplumber-gui)
+With flatpak installed, run this command.
+```BASH
+flatpak install flathub io.github.dyegoaurelio.simple-wireplumber-gui
+```
+### Arch User Repository
+This method only works on Arch-based Linux distributions and is community-maintained.
+See package information [here](https://aur.archlinux.org/packages/simple-wireplumber-gui).
+
+#### With yay
+```BASH
+yay -S simple-wireplumber-gui
+```
+
+#### Without an AUR helper
+Clone the repository
+```BASH
+git clone https://aur.archlinux.org/simple-wireplumber-gui.git
+```
+Change directory into the repository
+```BASH
+cd simple-wireplumber-gui
+```
+Make the package
+```BASH
+makepkg -si
+```
 
 ## Clearing changes
 
 When you uninstall this app, its changes will remain on your system.
 
-If you wish to erase all its changes, you can just run on your terminal:
+If you wish to erase all its changes, you can just run this on your terminal if you installed with flathub:
 
 ```BASH
 flatpak run io.github.dyegoaurelio.simple-wireplumber-gui --clear-settings
