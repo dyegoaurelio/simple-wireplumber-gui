@@ -8,14 +8,14 @@ With this tool you can easily rename and see the properties of your audio device
 
 ## Installation
 ### Flathub
-See package information [here](https://flathub.org/apps/io.github.dyegoaurelio.simple-wireplumber-gui).
+This is the preferred method of installation. See package information [here](https://flathub.org/apps/io.github.dyegoaurelio.simple-wireplumber-gui).
 
 With flatpak installed, run this command.
 ```BASH
 flatpak install flathub io.github.dyegoaurelio.simple-wireplumber-gui
 ```
 ### Arch User Repository
-This method only works on Arch-based Linux distributions.
+This method only works on Arch-based Linux distributions and is community-maintained.
 See package information [here](https://aur.archlinux.org/packages/simple-wireplumber-gui).
 
 #### With yay
