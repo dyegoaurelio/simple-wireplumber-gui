@@ -10,7 +10,7 @@ With this tool you can easily rename and see the properties of your audio device
 ### Flathub
 This is the preferred method of installation. See package information [here](https://flathub.org/apps/io.github.dyegoaurelio.simple-wireplumber-gui).
 
-With flatpak installed, run this command.
+With flatpak installed, run this command:
 ```BASH
 flatpak install flathub io.github.dyegoaurelio.simple-wireplumber-gui
 ```
@@ -24,17 +24,43 @@ yay -S simple-wireplumber-gui
 ```
 
 #### Without an AUR helper
-Clone the repository
+Clone the repository:
 ```BASH
 git clone https://aur.archlinux.org/simple-wireplumber-gui.git
 ```
-Change directory into the repository
+Change directory into the repository:
 ```BASH
 cd simple-wireplumber-gui
 ```
-Make the package
+Make the package:
 ```BASH
 makepkg -si
+```
+
+### Compiling from Source
+You may want to compile Simple Wireplumber GUI from source.
+
+Clone the repository and change directory into it:
+```BASH
+git clone https://www.github.com/dyegoaurelio/simple-wireplumber-gui.git
+cd simple-wireplumber-gui
+```
+Create and set up the build directory:
+```BASH
+mkdir ../builddir
+meson setup ../builddir
+```
+Compile:
+```BASH
+meson compile -C ../builddir
+```
+Finally, as root, install:
+```BASH
+meson install -C ../builddir
+```
+If running `simple-wireplumber-gui` gives a "permission denied" error, as root, try:
+```BASH
+chmod +x /usr/local/bin/simple-wireplumber-gui
 ```
 
 ## Clearing changes
