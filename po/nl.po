@@ -92,7 +92,7 @@ msgid "Unchanged devices"
 msgstr "Ongewijzigde apparaten"
 
 #: src/window.ui:27
-msgid "Audio devices avaliable to be edited"
+msgid "Audio devices available to be edited"
 msgstr "Aanpasbare geluidsapparaten"
 
 #: src/window.ui:33
