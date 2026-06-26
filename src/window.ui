@@ -24,7 +24,7 @@
         <child>
           <object class="AdwPreferencesGroup" id="physical_unchanged">
             <property name="title" translatable="yes">Unchanged devices</property>
-            <property name="description" translatable="yes">Audio devices avaliable to be edited</property>
+            <property name="description" translatable="yes">Audio devices available to be edited</property>
           </object>
         </child>
 

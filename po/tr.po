@@ -96,7 +96,7 @@ msgid "Unchanged devices"
 msgstr "Değişmemiş aygıtlar"
 
 #: src/window.ui:27
-msgid "Audio devices avaliable to be edited"
+msgid "Audio devices available to be edited"
 msgstr "Düzenlenebilir ses aygıtları"
 
 #: src/window.ui:33

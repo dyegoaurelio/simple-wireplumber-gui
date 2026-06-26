@@ -91,7 +91,7 @@ msgid "Unchanged devices"
 msgstr ""
 
 #: src/window.ui:27
-msgid "Audio devices avaliable to be edited"
+msgid "Audio devices available to be edited"
 msgstr ""
 
 #: src/window.ui:33
